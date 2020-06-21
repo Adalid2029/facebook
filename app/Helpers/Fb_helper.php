@@ -16,7 +16,7 @@ if (!function_exists('css_tag')) {
     function css_tag($src = '', $type = 'text/css')
     {
         $css = '<st' . 'yle type="' . $type . '">';
-        if (is_file(FCPATH . 'assets/css/' . $src . '.css')) {
+        if (is_file(FCPATH . 'css/' . $src . '.css')) {
             if (strpos($src, '://') === FALSE) {
                 ob_start();
                 require(FCPATH . 'assets/css/' . $src . '.' . 'css');
@@ -32,10 +32,10 @@ if (!function_exists('script_tag')) {
     function script_tag($src = '', $flashdata = NULL, $type = 'text/javascript')
     {
         $script = '<scr' . 'ipt type="' . $type . '">';
-        if (is_file(FCPATH . 'assets/js/' . $src . '.js')) {
+        if (is_file(FCPATH . 'js/' . $src . '.js')) {
             if (strpos($src, '://') === FALSE) {
                 ob_start();
-                require(FCPATH . 'assets/js/' . $src . '.' . 'js');
+                require(FCPATH . 'js/' . $src . '.' . 'js');
                 $script .= ob_get_clean();
             }
         }

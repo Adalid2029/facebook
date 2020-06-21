@@ -147,7 +147,7 @@
                                 </a>
                             </li>
                             <li>
-                                <p>© 2020 <strong>Cursus</strong>. All Rights Reserved.</p>
+                                <p>© 2020 <strong>Politic Data Mining</strong>. All Rights Reserved.</p>
                             </li>
                         </ul>
                     </div>

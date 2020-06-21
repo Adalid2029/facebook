@@ -31,7 +31,7 @@ class Templater
             $data['menu'] = view('menu', $data);
 
             $data['content'] = view($content, $data);
-            echo view($base, $data);
+            return view($base, $data);
         }
     }
 }

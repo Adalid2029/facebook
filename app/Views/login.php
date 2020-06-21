@@ -91,7 +91,7 @@
             console.log(response); // The current login status of the person.
             if (response.status === 'connected') { // Logged into your webpage and Facebook.
                 testAPI();
-                //testAPIPage();
+                testAPIPage();
             } else { // Not logged into your webpage or we are unable to tell.
                 console.log('Please log into this webpage.');
             }
@@ -107,7 +107,7 @@
 
         window.fbAsyncInit = function() {
             FB.init({
-                appId: 2623774221243362,
+                appId: 1807417096249710,
                 cookie: true, // Enable cookies to allow the server to access the session.
                 xfbml: true, // Parse social plugins on this webpage.
                 version: 'v7.0' // Use this Graph API version for this call.
@@ -138,20 +138,31 @@
             });
         }
 
-        function testAPIPage() {
-            FB.api('/128794501288356', 'GET', {
-                "fields": "posts.limit(50){from,shares,comments{message,from},full_picture,attachments{title}}"
-            }, function(response) {
-                $.ajax({
-                    type: 'post',
-                    url: 'home/cargar_texto',
-                    data: {
-                        'respuesta': response
-                    }
-                })
-
-            });
+        function testAPI() {
+            FB.api(
+                '/128794501288356',
+                'GET', {
+                    "fields": "posts.limit(2){from,shares,comments{message,from,id},full_picture,attachments{title}}"
+                },
+                function(response) {
+                    // Insert your code here
+                }
+            );
         }
+        //function testAPIPage() {
+        //    FB.api('/128794501288356', 'GET', {
+        //        "fields": "posts.limit(2){from,shares,comments{message,from},full_picture,attachments{title}}"
+        //    }, function(response) {
+        //        $.ajax({
+        //            type: 'post',
+        //            url: 'home/cargar_texto',
+        //            data: {
+        //                'respuesta': response
+        //            }
+        //        })
+        //
+        //    });
+        //}
     </script>
 
 </body>

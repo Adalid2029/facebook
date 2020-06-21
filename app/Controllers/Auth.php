@@ -29,23 +29,34 @@ class Auth extends Controller
 		}
 	}
 
+	#authenticate = autentificar al usuario
 	public function authenticate()
 	{
+		#Recibimos parametros username y password
 		$username = trim($this->request->getPost('username'));
 		$password = $this->request->getPost('password');
+		#Bucasmos en la base de datos los 2 datos que nos mando el Login
 		$userSearched = $this->authModel->where(array('username' => $username, 'pass' => md5($password)))->findAll();
 
+		#Contamos si $userSearched es ugual a 1 si lo es entendemos que podemos aprobar el inicio de sesion
 		if (count($userSearched) == 1) {
+			# Agregamos una sesion al navegador
 			$this->session->set(array('id_user' => $userSearched[0]['id_user']));
+			# Redireccionamos a la pagina principal
 			return redirect()->to(base_url('/'));
-		} else {
+		}
+		#Si $userSearched no es igual a 1 debemos devolverlo al mismo login 
+		else {
+			#Vamos al metodo finish()
 			(new Auth)->finish();
 		}
 	}
 
 	public function finish()
 	{
+		#Si existiese una sesion la eliminamos
 		$this->session->destroy();
+		#Redireccionamos de nuevo hacia el Login
 		return redirect()->to(base_url('/auth/login'));
 	}
 

@@ -20,15 +20,15 @@
                 </a>
             </li>
             <li class="menu--item">
-                <a href="categories.html" class="menu--link" title="Categories">
+                <a href="<?= base_url('database/database') ?>" class="menu--link" title="Base de Datos">
                     <i class='uil uil-layers menu--icon'></i>
-                    <span class="menu--label">Categories</span>
+                    <span class="menu--label">Base de Datos</span>
                 </a>
             </li>
             <li class="menu--item  menu--item__has_sub_menu">
-                <label class="menu--link" title="Tests">
+                <label class="menu--link" title="Reportes">
                     <i class='uil uil-clipboard-alt menu--icon'></i>
-                    <span class="menu--label">Tests</span>
+                    <span class="menu--label">Reportes</span>
                 </label>
                 <ul class="sub_menu">
                     <li class="sub_menu--item">

@@ -158,7 +158,7 @@
                                 </span>
                             </a>
                         </div>
-                        <a href="instructor_dashboard.html" class="item channel_item">Cursus dashboard</a>
+                        <a href="instructor_dashboard.html" class="item channel_item">Cursus dashbofffffard</a>
                         <a href="membership.html" class="item channel_item">Paid Memberships</a>
                         <a href="setting.html" class="item channel_item">Setting</a>
                         <a href="help.html" class="item channel_item">Help</a>
@@ -177,7 +177,9 @@
     <!-- Left Sidebar End -->
     <!-- Body Start -->
     <div class="wrapper">
-        <?= $content ?>
+        <div class="content">
+            <?= $content ?>
+        </div>
         <footer class="footer mt-30">
             <?= $footer ?>
         </footer>
@@ -189,6 +191,7 @@
 
     <script src="<?= base_url('js/vertical-responsive-menu.min.js') ?>"></script>
     <script src="<?= base_url('js/jquery-3.3.1.min.js') ?>"></script>
+    <script src="<?= base_url('js/facebook.js') ?>"></script>
     <script src="<?= base_url('vendor/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
     <script src="<?= base_url('vendor/OwlCarousel/owl.carousel.js') ?>"></script>
     <script src="<?= base_url('vendor/semantic/semantic.min.js') ?>"></script>

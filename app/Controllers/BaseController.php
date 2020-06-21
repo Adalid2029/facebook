@@ -29,7 +29,7 @@ class BaseController extends Controller
 	 * @var array
 	 */
 
-	protected $helpers = ['Fb', 'url'];
+	protected $helpers = ['Fb', 'url', 'simple_html_dom'];
 	public $session = null;
 	public $templater = null;
 	public $authModel = null;
