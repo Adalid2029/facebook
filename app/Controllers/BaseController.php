@@ -18,6 +18,8 @@ namespace App\Controllers;
 use App\Libraries\Templater;
 use CodeIgniter\Controller;
 use App\Models\AuthModel;
+use App\Models\DataPosgradoModel;
+use App\Models\DataPoliticModel;
 
 class BaseController extends Controller
 {
@@ -33,6 +35,8 @@ class BaseController extends Controller
 	public $session = null;
 	public $templater = null;
 	public $authModel = null;
+	public $dataPosgradoModel = null;
+	public $dataPoliticModel = null;
 	protected $user = null;
 	protected $data = array();
 	/**
@@ -43,6 +47,8 @@ class BaseController extends Controller
 		$this->session = \Config\Services::session();
 		$this->templater = new Templater(\Config\Services::request());
 		$this->authModel = new AuthModel();
+		$this->dataPosgradoModel = new DataPosgradoModel();
+		$this->dataPoliticModel = new DataPoliticModel();
 	}
 	public function initController(\CodeIgniter\HTTP\RequestInterface $request, \CodeIgniter\HTTP\ResponseInterface $response, \Psr\Log\LoggerInterface $logger)
 	{

@@ -20,7 +20,7 @@
                 </a>
             </li>
             <li class="menu--item">
-                <a href="<?= base_url('database/database') ?>" class="menu--link" title="Base de Datos">
+                <a href="<?= base_url('data/index') ?>" class="menu--link" title="Base de Datos">
                     <i class='uil uil-layers menu--icon'></i>
                     <span class="menu--label">Base de Datos</span>
                 </a>
