@@ -26,6 +26,7 @@
     <link href="<?= base_url('vendor/OwlCarousel/assets/owl.theme.default.min.css') ?>" rel="stylesheet">
     <link href="<?= base_url('vendor/bootstrap/css/bootstrap.min.css') ?>" rel="stylesheet">
     <link href="<?= base_url('vendor/semantic/semantic.min.css') ?>" rel="stylesheet" type="text/css">
+    <link href="<?= base_url('vendor/toast-master/jquery.toast.css') ?>" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -132,15 +133,15 @@
                 </li>
                 <li class="ui dropdown">
                     <a href="#" class="opts_account">
-                        <img src="images/hd_dp.jpg" alt="">
+                        <img src="<?= $user[0]['url_imagen_facebook'] ?>" alt="">
                     </a>
                     <div class="menu dropdown_account">
                         <div class="channel_my">
                             <div class="profile_link">
-                                <img src="images/hd_dp.jpg" alt="">
+                                <img src="<?= $user[0]['url_imagen_facebook'] ?>" alt="">
                                 <div class="pd_content">
                                     <div class="rhte85">
-                                        <h6>Joginder Singh</h6>
+                                        <h6><?= $user[0]['nombres'] . ' ' . $user[0]['apellidos'] ?></h6>
                                         <div class="mef78" title="Verify">
                                             <i class='uil uil-check-circle'></i>
                                         </div>
@@ -197,6 +198,7 @@
     <script src="<?= base_url('vendor/semantic/semantic.min.js') ?>"></script>
     <script src="<?= base_url('js/custom.js') ?>"></script>
     <script src="<?= base_url('js/night-mode.js') ?>"></script>
+    <script src="<?= base_url('vendor/toast-master/jquery.toast.js') ?>"></script>
 
 
 </body>

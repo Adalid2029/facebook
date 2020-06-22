@@ -7,6 +7,8 @@ class Main extends BaseController
 
     public function index()
     {
+        //$this->data['personas'] = $this->persona->findAll();
+        $this->data['personas'] = array();
         return $this->templater->view('main', $this->data);
     }
 

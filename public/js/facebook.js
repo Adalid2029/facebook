@@ -24,7 +24,7 @@ $(document)
 				$('.mainnav-toggle').click();
 			}
 		});
-		window.alertaSimple = function (title, message, position, icon, hideAfter) {
+		window.simpleAlert = function (title, message, position, icon, hideAfter) {
 			/**
 			 * title: Titúlo de alerta
 			 * message:  Mensaje de la alerta
@@ -32,7 +32,6 @@ $(document)
 			 * position : top-right, top-left
 			 * hideAfter: Tiempo de alerta
 			 */
-
 			$.toast({
 				heading: title,
 				text: message,

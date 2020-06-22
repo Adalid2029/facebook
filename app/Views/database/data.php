@@ -83,44 +83,6 @@
                             <a href="my_instructor_profile_view.html" class="prfle12link">Go To Profile</a>
                         </div>
                     </div>
-                    <div class="fcrse_3">
-                        <div class="cater_ttle">
-                            <h4>Live Streaming</h4>
-                        </div>
-                        <div class="live_text">
-                            <div class="live_icon"><i class="uil uil-kayak"></i></div>
-                            <div class="live-content">
-                                <p>Set up your channel and stream live to your students</p>
-                                <button class="live_link" onclick="window.location.href = 'add_streaming.html';">Get Started</button>
-                                <span class="livinfo">Info : This feature only for 'Instructors'.</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="get1452">
-                        <h4>Get personalized recommendations</h4>
-                        <p>Answer a few questions for your top picks</p>
-                        <button class="Get_btn" onclick="window.location.href = '#';">Get Started</button>
-                    </div>
-                    <div class="fcrse_3">
-                        <div class="cater_ttle">
-                            <h4>Top Categories</h4>
-                        </div>
-                        <ul class="allcate15">
-                            <li><a href="#" class="ct_item"><i class='uil uil-arrow'></i>Development</a></li>
-                            <li><a href="#" class="ct_item"><i class='uil uil-graph-bar'></i>Business</a></li>
-                            <li><a href="#" class="ct_item"><i class='uil uil-monitor'></i>IT and Software</a></li>
-                            <li><a href="#" class="ct_item"><i class='uil uil-ruler'></i>Design</a></li>
-                            <li><a href="#" class="ct_item"><i class='uil uil-chart-line'></i>Marketing</a></li>
-                            <li><a href="#" class="ct_item"><i class='uil uil-book-open'></i>Personal Development</a></li>
-                            <li><a href="#" class="ct_item"><i class='uil uil-camera'></i>Photography</a></li>
-                            <li><a href="#" class="ct_item"><i class='uil uil-music'></i>Music</a></li>
-                        </ul>
-                    </div>
-                    <div class="strttech120">
-                        <h4>Become an Instructor</h4>
-                        <p>Top instructors from around the world teach millions of students on Cursus. We provide the tools and skills to teach what you love.</p>
-                        <button class="Get_btn" onclick="window.location.href = '#';">Start Teaching</button>
-                    </div>
                 </div>
             </div>
         </div>

@@ -7,87 +7,18 @@
                     <a href="live_streams.html" class="see150">See all</a>
                     <div class="la5lo1">
                         <div class="owl-carousel live_stream owl-theme">
-                            <div class="item">
-                                <div class="stream_1">
-                                    <a href="live_output.html" class="stream_bg">
-                                        <img src="images/left-imgs/img-1.jpg" alt="">
-                                        <h4>John Doe</h4>
-                                        <p>live<span></span></p>
-                                    </a>
+                            <?php foreach ($personas as $key => $value) : ?>
+                                <div class="item">
+                                    <div class="stream_1">
+                                        <a href="<?= $value['url_perfil_facebook'] ?>" target="_blank" class="stream_bg">
+                                            <img src="<?= $value['url_imagen_facebook'] ?>" alt="">
+                                            <h4><?= $value['nombres'] . ' ' . $value['apellidos'] ?></h4>
+                                            <p class="small"><?= $value['id_facebook'] ?><span></span></p>
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="item">
-                                <div class="stream_1">
-                                    <a href="live_output.html" class="stream_bg">
-                                        <img src="images/left-imgs/img-2.jpg" alt="">
-                                        <h4>Jassica</h4>
-                                        <p>live<span></span></p>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="stream_1">
-                                    <a href="live_output.html" class="stream_bg">
-                                        <img src="images/left-imgs/img-9.jpg" alt="">
-                                        <h4>Edututs+</h4>
-                                        <p>live<span></span></p>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="stream_1">
-                                    <a href="live_output.html" class="stream_bg">
-                                        <img src="images/left-imgs/img-3.jpg" alt="">
-                                        <h4>Joginder Singh</h4>
-                                        <p>live<span></span></p>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="stream_1">
-                                    <a href="live_output.html" class="stream_bg">
-                                        <img src="images/left-imgs/img-4.jpg" alt="">
-                                        <h4>Zoena</h4>
-                                        <p>live<span></span></p>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="stream_1">
-                                    <a href="live_output.html" class="stream_bg">
-                                        <img src="images/left-imgs/img-5.jpg" alt="">
-                                        <h4>Albert Dua</h4>
-                                        <p>live<span></span></p>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="stream_1">
-                                    <a href="live_output.html" class="stream_bg">
-                                        <img src="images/left-imgs/img-6.jpg" alt="">
-                                        <h4>Ridhima</h4>
-                                        <p>live<span></span></p>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="stream_1">
-                                    <a href="live_output.html" class="stream_bg">
-                                        <img src="images/left-imgs/img-7.jpg" alt="">
-                                        <h4>Amritpal</h4>
-                                        <p>live<span></span></p>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="stream_1">
-                                    <a href="live_output.html" class="stream_bg">
-                                        <img src="images/left-imgs/img-8.jpg" alt="">
-                                        <h4>Jimmy</h4>
-                                        <p>live<span></span></p>
-                                    </a>
-                                </div>
-                            </div>
+
+                            <?php endforeach; ?>
                         </div>
                     </div>
                 </div>
@@ -961,11 +892,11 @@
                 <div class="right_side">
                     <div class="fcrse_2 mb-30">
                         <div class="tutor_img">
-                            <a href="my_instructor_profile_view.html"><img src="images/left-imgs/img-10.jpg" alt=""></a>
+                            <a href="<?= $user[0]['url_perfil_facebook'] ?>" target="_blank"><img src="<?= $user[0]['url_imagen_facebook'] ?>" alt=""></a>
                         </div>
                         <div class="tutor_content_dt">
                             <div class="tutor150">
-                                <a href="my_instructor_profile_view.html" class="tutor_name">Joginder Singh</a>
+                                <a href="<?= $user[0]['url_perfil_facebook'] ?>" class="tutor_name"><?= $user[0]['nombres'] . ' ' . $user[0]['apellidos'] ?></a>
                                 <div class="mef78" title="Verify">
                                     <i class="uil uil-check-circle"></i>
                                 </div>

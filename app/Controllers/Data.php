@@ -12,24 +12,27 @@ class Data extends BaseController
     public function rechargeDataBasePolitic()
     {
         $i = 0;
-        $description = array();
-        $comments = array();
-        $name_seller = array();
-        $id_fb_seller = array();
-        $image_seller = array();
-        //return var_dump(count($this->dataPoliticModel->findAll()));
         //echo $this->dataPoliticModel->insertID();
         foreach ($this->dataPoliticModel->findAll() as $data) {
             $id_facebook = $this->extractIdFacebook($data['url_profile'], 2);
             if (count($this->persona->where(array('id_facebook' => $id_facebook))->findAll()) == 0) {
-                $personas = [
-                    'nombres' => trim($data['name_profile']),
-                    'id_facebook' => trim($id_facebook),
-                    'url_perfil_facebook' => trim($this->extractUrlFacebook($data['url_profile'])),
-                    //'url_imagen_facebook' => $data['img_profile']
-                ];
-                $this->persona->insert($personas);
+                try {
+                    $this->insertPerson(array(
+                        'nombres' => trim($data['name_profile']),
+                        'id_facebook' => trim($id_facebook),
+                        'url_perfil_facebook' => trim($this->extractUrlFacebook($data['url_profile'])),
+                        'url_imagen_facebook' => $data['image_profile']
+                    ));
+                } catch (\Exception $e) {
+                    die($e->getMessage());
+                }
             }
+        }
+        foreach ($this->dataPoliticModel->findAll() as $data) {
+            $comments = array();
+            $name_seller = array();
+            $id_fb_seller = array();
+            $image_seller = array();
 
             $html = str_get_html($data['html_comment']);
             foreach ($html->find('span._3l3x') as $ul) {
@@ -47,13 +50,21 @@ class Data extends BaseController
                 }
             }
 
-            $this->insertPostAndComments(array(
-                'texto_post' => trim($data['description']),
-                'reacciones' => $this->extractReactions(trim($data['reactions'])),
-                'compartir' => trim($data['reproductions']),
-                'imagen_post' => trim($data['img_publication']),
-                'id_persona' => trim($this->extractIdFacebook($data['url_profile'], 2)),
-            ), array());
+            try {
+                $this->insertPostAndComments(array(
+                    'texto_post' => trim($data['description']),
+                    'reacciones' => $this->extractReactions(trim($data['reactions'])),
+                    'reproducciones' => trim($data['reproductions']),
+                    'imagen_post' => trim($data['img_publication']),
+                    'id_facebook' => trim($this->extractIdFacebook($data['url_profile'], 2)),
+                ), array(
+                    'comments' => $comments,
+                    'name_seller' => $name_seller,
+                    'id_fb_seller' => $id_fb_seller
+                ));
+            } catch (\Exception $e) {
+                die($e->getMessage());
+            }
         }
         //var_dump($description);
         //var_dump($comments);
@@ -61,9 +72,15 @@ class Data extends BaseController
         //var_dump($image_seller);
         //var_dump($id_fb_seller);
     }
+    function insertPerson($persona)
+    {
+        $this->persona->insert($persona);
+    }
     function insertPostAndComments($posts, $comments)
     {
-        var_dump($posts);
+        $this->post->insert($posts);
+        //var_dump($posts);
+        //var_dump($comments);
     }
     function extractReactions($react = '')
     {

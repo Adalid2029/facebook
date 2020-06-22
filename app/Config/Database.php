@@ -44,7 +44,7 @@ class Database extends \CodeIgniter\Database\Config
 		'DBDebug'  => (ENVIRONMENT !== 'development'),
 		'cacheOn'  => false,
 		'cacheDir' => '',
-		'schema' => 'principal, public, red_social',
+		'schema' => 'public, principal, red_social',
 		'charset'  => 'utf8',
 		'DBCollat' => 'utf8_general_ci',
 		'swapPre'  => '',

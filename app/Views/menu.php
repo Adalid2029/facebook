@@ -2,7 +2,7 @@
     <div class="left_section">
         <ul>
             <li class="menu--item">
-                <a href="index.html" class="menu--link active" title="Home">
+                <a href="<?= base_url('main/index') ?>" class="menu--link active" title="Home">
                     <i class='uil uil-home-alt menu--icon'></i>
                     <span class="menu--label">Home</span>
                 </a>
