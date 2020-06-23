@@ -4,7 +4,6 @@ namespace App\Controllers;
 
 class Main extends BaseController
 {
-
     public function index()
     {
         //$this->data['personas'] = $this->persona->findAll();
