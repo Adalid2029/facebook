@@ -35,8 +35,8 @@
             <div class="row justify-content-lg-center justify-content-md-center">
                 <div class="col-lg-12">
                     <div class="main_logo25" id="logo">
-                        <a href="index.html"><img src="<?= base_url('images/logo.svg') ?>" alt=""></a>
-                        <a href="index.html"><img class="logo-inverse" src="<?= base_url('images/ct_logo.svg') ?>" alt=""></a>
+                        <a href="index.html"><img class="img-fluid" src="<?= base_url('images/logo.png') ?>" alt=""></a>
+                        <a href="index.html"><img class="logo-inverse img-fluid" src="<?= base_url('images/ct_logo.png') ?>" alt=""></a>
                     </div>
                 </div>
 
@@ -72,7 +72,7 @@
                         <p class="sgntrm145"><a href="forgot_password.html">¿Se te olvidó tu contraseña?</a>.</p>
                         <p class="mb-0 mt-30 hvsng145">¿No tienes una cuenta? <a href="<?= base_url('sign_up') ?>">Regístrate</a></p>
                     </div>
-                    <div class="sign_footer"><img src="<?= base_url('images/sign_logo.png') ?>" alt="">© 2020 <strong>Politic Data Minning</strong>.Todos los derechos reservados.</div>
+                    <div class="sign_footer"><img class="img-fluid" src="<?= base_url('images/sign_logo.png') ?>" alt="">© 2020 <strong>Politic Data Minning</strong>.Todos los derechos reservados.</div>
                 </div>
             </div>
         </div>
