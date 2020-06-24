@@ -6,11 +6,9 @@ if (!function_exists('authenticated')) {
     function authenticated()
     {
         $id_user = (new AuthModel())->find(array('id_user' => (\Config\Services::session())->get('id_user')));
-        return (is_null($id_user) ? FALSE : $id_user);
+        return (is_null($id_user) ? false : $id_user);
     }
 }
-
-
 
 if (!function_exists('css_tag')) {
     function css_tag($src = '', $type = 'text/css')

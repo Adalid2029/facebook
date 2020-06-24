@@ -5,7 +5,18 @@ $(document).ready(function () {
 		e.preventDefault();
 		$.ajax({
 			url: '/data/rechargeDataBasePolitic',
-		}).done(function (success) {});
+		})
+			.done(function (data) {
+				if (typeof data.success !== 'undefined') {
+					simpleAlert('CORRECTO', data.success, 'top-right', 'success', 6000);
+				} else {
+					simpleAlert('ERROR', data.error, 'top-right', 'error', 6000);
+				}
+			})
+			.fail(function (jqXHR, textStatus) {
+				simpleAlert(jqXHR.statusText, jqXHR.status, 'top-right', 'error', 3000);
+				console.log(jqXHR.responseText);
+			});
 	});
 
 	$('#update_db_posgrado').on('click', function (e) {

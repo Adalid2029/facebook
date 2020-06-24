@@ -2,10 +2,10 @@
 
 namespace App\Libraries;
 
+use App\Controllers\BaseController;
 use CodeIgniter\HTTP\RequestInterface;
-use App\Models\AuthModel;
 
-class Templater
+class Templater extends BaseController
 {
     public $request = null;
 
