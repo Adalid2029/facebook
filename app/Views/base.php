@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, shrink-to-fit=9">
     <meta name="description" content="Gambolthemes">
     <meta name="author" content="Gambolthemes">
-    <title>Cursus - Index</title>
+    <title>Politic Data Mining</title>
 
     <!-- Favicon Icon -->
     <link href="<?= base_url('images/fav.png') ?>" rel="icon" type="image/png">
@@ -19,6 +19,8 @@
     <link href="<?= base_url('css/style.css') ?>" rel="stylesheet">
     <link href="<?= base_url('css/responsive.css') ?>" rel="stylesheet">
     <link href="<?= base_url('css/night-mode.css') ?>" rel="stylesheet">
+    <link href="<?= base_url('css/instructor-dashboard.css') ?>" rel="stylesheet">
+    <link href="<?= base_url('css/instructor-responsive.css') ?>" rel="stylesheet">
 
     <!-- Vendor Stylesheets -->
     <link href="<?= base_url('vendor/fontawesome-free/css/all.min.css') ?>" rel="stylesheet">
@@ -44,10 +46,10 @@
             <a href="index.html"><img class="img-fluid" src="images/logo.png" alt=""></a>
             <a href="index.html"><img class="logo-inverse img-fluid" src="images/ct_logo.png" alt=""></a>
         </div>
-        <div class="search120">
+        <div class="search120 header_right">
             <div class="ui search">
                 <div class="ui left icon input swdh10">
-                    <input class="prompt srch10" type="text" placeholder="Search for Tuts Videos, Tutors, Tests and more..">
+                    <input class="prompt srch10" type="text" name="text" placeholder="Buscar texto especifico, test y mas...">
                     <i class='uil uil-search-alt icon icon1'></i>
                 </div>
             </div>
@@ -55,9 +57,12 @@
         <div class="header_right">
             <ul>
                 <li>
-                    <a href="create_new_course.html" class="upload_btn">Create New Course</a>
+                    <a href="#" class="upload_btn" id="search_text">
+                        <i class='uil uil-search-alt icon icon1'></i>
+                        Buscar texto especifico</a>
                 </li>
                 <li>
+
                     <a href="index.html" class="option_links"><i class='uil uil-home-alt'></i><span class="noti_count">9+</span></a>
                 </li>
                 <li class="ui dropdown">

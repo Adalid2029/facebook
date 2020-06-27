@@ -8,7 +8,7 @@ use TextAnalysis\Tokenizers\WhitespaceTokenizer;
 use StopWordFactory;
 use TextAnalysis\Filters;
 
-class TextMining extends BaseController
+class Explore extends BaseController
 {
     const NGRAM_SIZE = 3;
 
@@ -23,11 +23,28 @@ class TextMining extends BaseController
     protected $contentFilters = [];
     public function index()
     {
-        foreach ($this->comentario->findAll() as $key => $value) {
-            $this->get($value['comentario']);
-            strpos($value['comentario'], 'elecciones') ? var_dump($value['comentario']) : null;
-            //var_dump($this->get($value['comentario']));
+        return $this->templater->view('explore/explore', $this->data);
+    }
+    public function searchText()
+    {
+        try {
+            $explode = array();
+            foreach ($this->comentario->findAll() as $key => $value) {
+                if (strpos($value['comentario'], trim($this->request->getPost('text')))) {
+                    $explode[] =  $value['comentario'];
+                }
+                //$this->get($value['comentario']);
+                //strpos($value['comentario'], 'evo') ? var_dump($value['comentario']) : null;
+                //var_dump($this->get($value['comentario']));
+            }
+
+            $this->data['text_searched'] = $explode;
+            return $this->templater->view('explore/explore', $this->data);
+        } catch (\Exception $e) {
+            die($e->getMessage());
         }
+        //return $this->response->setJSON(array('success' => 'La carga de la Base de Datos se realizo correctamente'));
+        //return $this->response->setJSON(array('error' => 'La carga de la Base de Datos no se realizo correctamente'));
     }
     public function get($content)
     {

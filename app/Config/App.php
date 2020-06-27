@@ -23,7 +23,7 @@ class App extends BaseConfig
 	| environments.
 	|
 	*/
-	public $baseURL = 'https://bytenew.xyz/';
+	public $baseURL = 'https://bytenew.xyz/public';
 
 	/*
 	|--------------------------------------------------------------------------

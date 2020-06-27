@@ -13,7 +13,7 @@ define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'developm
 
 // Location of the Paths config file.
 // This is the line that might need to be changed, depending on your folder structure.
-$pathsPath = FCPATH . '../app/Config/Paths.php';
+$pathsPath = FCPATH . 'app/Config/Paths.php';
 // ^^^ Change this if you move your application folder
 
 /*

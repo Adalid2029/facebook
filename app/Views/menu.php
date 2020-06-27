@@ -2,21 +2,15 @@
     <div class="left_section">
         <ul>
             <li class="menu--item">
-                <a href="<?= base_url('main/index') ?>" class="menu--link active" title="Home">
+                <a href="<?= base_url('main/index') ?>" class="menu--link active" title="Inicio">
                     <i class='uil uil-home-alt menu--icon'></i>
-                    <span class="menu--label">Home</span>
+                    <span class="menu--label">Inicio</span>
                 </a>
             </li>
             <li class="menu--item">
-                <a href="live_streams.html" class="menu--link" title="Live Streams">
-                    <i class='uil uil-kayak menu--icon'></i>
-                    <span class="menu--label">Live Streams</span>
-                </a>
-            </li>
-            <li class="menu--item">
-                <a href="explore.html" class="menu--link" title="Explore">
+                <a href="<?= base_url('explore/index') ?>" class="menu--link" title="Explorar">
                     <i class='uil uil-search menu--icon'></i>
-                    <span class="menu--label">Explore</span>
+                    <span class="menu--label">Explorar</span>
                 </a>
             </li>
             <li class="menu--item">
@@ -48,107 +42,9 @@
                     </li>
                 </ul>
             </li>
-            <li class="menu--item">
-                <a href="saved_courses.html" class="menu--link" title="Saved Courses">
-                    <i class="uil uil-heart-alt menu--icon"></i>
-                    <span class="menu--label">Saved Courses</span>
-                </a>
-            </li>
-            <li class="menu--item  menu--item__has_sub_menu">
-                <label class="menu--link" title="Pages">
-                    <i class='uil uil-file menu--icon'></i>
-                    <span class="menu--label">Pages</span>
-                </label>
-                <ul class="sub_menu">
-                    <li class="sub_menu--item">
-                        <a href="about_us.html" class="sub_menu--link">About</a>
-                    </li>
-                    <li class="sub_menu--item">
-                        <a href="sign_in.html" class="sub_menu--link">Sign In</a>
-                    </li>
-                    <li class="sub_menu--item">
-                        <a href="sign_up.html" class="sub_menu--link">Sign Up</a>
-                    </li>
-                    <li class="sub_menu--item">
-                        <a href="sign_up_steps.html" class="sub_menu--link">Sign Up Steps</a>
-                    </li>
-                    <li class="sub_menu--item">
-                        <a href="membership.html" class="sub_menu--link">Paid Membership</a>
-                    </li>
-                    <li class="sub_menu--item">
-                        <a href="course_detail_view.html" class="sub_menu--link">Course Detail View</a>
-                    </li>
-                    <li class="sub_menu--item">
-                        <a href="checkout_membership.html" class="sub_menu--link">Checkout</a>
-                    </li>
-                    <li class="sub_menu--item">
-                        <a href="invoice.html" class="sub_menu--link">Invoice</a>
-                    </li>
-                    <li class="sub_menu--item">
-                        <a href="career.html" class="sub_menu--link">Career</a>
-                    </li>
-                    <li class="sub_menu--item">
-                        <a href="apply_job.html" class="sub_menu--link">Job Apply</a>
-                    </li>
-                    <li class="sub_menu--item">
-                        <a href="our_blog.html" class="sub_menu--link">Our Blog</a>
-                    </li>
-                    <li class="sub_menu--item">
-                        <a href="blog_single_view.html" class="sub_menu--link">Blog Detail View</a>
-                    </li>
-                    <li class="sub_menu--item">
-                        <a href="company_details.html" class="sub_menu--link">Company Details</a>
-                    </li>
-                    <li class="sub_menu--item">
-                        <a href="press.html" class="sub_menu--link">Press</a>
-                    </li>
-                    <li class="sub_menu--item">
-                        <a href="live_output.html" class="sub_menu--link">Live Stream View</a>
-                    </li>
-                    <li class="sub_menu--item">
-                        <a href="add_streaming.html" class="sub_menu--link">Add live Stream</a>
-                    </li>
-                    <li class="sub_menu--item">
-                        <a href="search_result.html" class="sub_menu--link">Search Result</a>
-                    </li>
-                    <li class="sub_menu--item">
-                        <a href="thank_you.html" class="sub_menu--link">Thank You</a>
-                    </li>
-                    <li class="sub_menu--item">
-                        <a href="coming_soon.html" class="sub_menu--link">Coming Soon</a>
-                    </li>
-                    <li class="sub_menu--item">
-                        <a href="error_404.html" class="sub_menu--link">Error 404</a>
-                    </li>
-                </ul>
-            </li>
         </ul>
     </div>
-    <div class="left_section">
-        <h6 class="left_title">SUBSCRIPTIONS</h6>
-        <ul>
-            <li class="menu--item">
-                <a href="instructor_profile_view.html" class="menu--link user_img">
-                    <img src="images/left-imgs/img-1.jpg" alt="">
-                    Rock Smith
-                    <div class="alrt_dot"></div>
-                </a>
-            </li>
-            <li class="menu--item">
-                <a href="instructor_profile_view.html" class="menu--link user_img">
-                    <img src="images/left-imgs/img-2.jpg" alt="">
-                    Jassica William
-                </a>
-                <div class="alrt_dot"></div>
-            </li>
-            <li class="menu--item">
-                <a href="all_instructor.html" class="menu--link" title="Browse Instructors">
-                    <i class='uil uil-plus-circle menu--icon'></i>
-                    <span class="menu--label">Browse Instructors</span>
-                </a>
-            </li>
-        </ul>
-    </div>
+
     <div class="left_section pt-2">
         <ul>
             <li class="menu--item">
@@ -169,12 +65,7 @@
                     <span class="menu--label">Report History</span>
                 </a>
             </li>
-            <li class="menu--item">
-                <a href="feedback.html" class="menu--link" title="Send Feedback">
-                    <i class='uil uil-comment-alt-exclamation menu--icon'></i>
-                    <span class="menu--label">Send Feedback</span>
-                </a>
-            </li>
+
         </ul>
     </div>
     <div class="left_footer">
