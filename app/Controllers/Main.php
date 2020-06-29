@@ -6,7 +6,10 @@ class Main extends BaseController
 {
     public function index()
     {
-        $this->data['personas'] = $this->persona->findAll();
+        $this->data['personas'] = $this->persona->find([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]);
+        $this->data['number_people'] = count($this->persona->findAll());
+        $this->data['number_posts'] = count($this->post->findAll());
+        $this->data['number_comments'] = count($this->comentario->findAll());
         //$this->data['personas'] = array();
         return $this->templater->view('main', $this->data);
     }

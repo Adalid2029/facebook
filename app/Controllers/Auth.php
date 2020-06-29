@@ -47,8 +47,8 @@ class Auth extends Controller
 		}
 		#Si $userSearched no es igual a 1 debemos devolverlo al mismo login 
 		else {
-			#Vamos al metodo finish()
-			(new Auth)->finish();
+			$this->session->destroy();
+			return redirect()->to(base_url('/auth/login'));
 		}
 	}
 

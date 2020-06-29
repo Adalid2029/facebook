@@ -8,11 +8,11 @@
                 <div class="card_dash">
                     <div class="card_dash_left">
                         <h5>Personas</h5>
-                        <h2>$350</h2>
-                        <span class="crdbg_1">New $50</span>
+                        <h2><?= $number_people ?></h2>
+                        <span class="crdbg_1"><?= date('d/m/Y') ?></span>
                     </div>
                     <div class="card_dash_right">
-                        <img src="images/dashboard/achievement.svg" alt="">
+                        <img src="public/images/dashboard/achievement.svg" alt="">
                     </div>
                 </div>
             </div>
@@ -20,11 +20,11 @@
                 <div class="card_dash">
                     <div class="card_dash_left">
                         <h5>Publicaciones</h5>
-                        <h2>1500</h2>
-                        <span class="crdbg_2">New 125</span>
+                        <h2><?= $number_posts ?></h2>
+                        <span class="crdbg_2"><?= date('d/m/Y') ?></span>
                     </div>
                     <div class="card_dash_right">
-                        <img src="images/dashboard/graduation-cap.svg" alt="">
+                        <img src="public/images/dashboard/graduation-cap.svg" alt="">
                     </div>
                 </div>
             </div>
@@ -32,11 +32,11 @@
                 <div class="card_dash">
                     <div class="card_dash_left">
                         <h5>Comentarios</h5>
-                        <h2>130</h2>
-                        <span class="crdbg_3">New 5</span>
+                        <h2><?= $number_comments ?></h2>
+                        <span class="crdbg_3"><?= date('d/m/Y') ?></span>
                     </div>
                     <div class="card_dash_right">
-                        <img src="images/dashboard/online-course.svg" alt="">
+                        <img src="public/images/dashboard/online-course.svg" alt="">
                     </div>
                 </div>
             </div>
@@ -44,11 +44,11 @@
                 <div class="card_dash">
                     <div class="card_dash_left">
                         <h5>Busquedas</h5>
-                        <h2>2650</h2>
-                        <span class="crdbg_4">New 245</span>
+                        <h2>234</h2>
+                        <span class="crdbg_4"><?= date('d/m/Y') ?></span>
                     </div>
                     <div class="card_dash_right">
-                        <img src="images/dashboard/knowledge.svg" alt="">
+                        <img src="public/images/dashboard/knowledge.svg" alt="">
                     </div>
                 </div>
             </div>

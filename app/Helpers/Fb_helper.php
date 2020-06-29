@@ -30,10 +30,10 @@ if (!function_exists('script_tag')) {
     function script_tag($src = '', $flashdata = NULL, $type = 'text/javascript')
     {
         $script = '<scr' . 'ipt type="' . $type . '">';
-        if (is_file(FCPATH . 'js/' . $src . '.js')) {
+        if (is_file(FCPATH . 'public/js/' . $src . '.js')) {
             if (strpos($src, '://') === FALSE) {
                 ob_start();
-                require(FCPATH . 'js/' . $src . '.' . 'js');
+                require(FCPATH . 'public/js/' . $src . '.' . 'js');
                 $script .= ob_get_clean();
             }
         }

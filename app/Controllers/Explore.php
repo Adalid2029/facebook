@@ -29,16 +29,18 @@ class Explore extends BaseController
     {
         try {
             $explode = array();
+            $users = array();
             foreach ($this->comentario->findAll() as $key => $value) {
                 if (strpos($value['comentario'], trim($this->request->getPost('text')))) {
                     $explode[] =  $value['comentario'];
+                    $users[] =  $value['id_facebook'];
                 }
                 //$this->get($value['comentario']);
                 //strpos($value['comentario'], 'evo') ? var_dump($value['comentario']) : null;
                 //var_dump($this->get($value['comentario']));
             }
-
             $this->data['text_searched'] = $explode;
+            $this->data['users'] = $users;
             return $this->templater->view('explore/explore', $this->data);
         } catch (\Exception $e) {
             die($e->getMessage());

@@ -17,10 +17,10 @@
                                         <div class="chat__message__dt">
                                             <div class="user-status">
                                                 <div class="user-avatar">
-                                                    <img src="images/left-imgs/img-1.jpg" alt="">
+                                                    <img src="public/images/left-imgs/img-1.jpg" alt="">
                                                     <div class="msg__badge">2</div>
                                                 </div>
-                                                <p class="user-status-title"><span class="bold">John Doe</span></p>
+                                                <p class="user-status-title"><span class="bold"><?= $users[$key] ?></span></p>
                                                 <p class="user-status-text"><?= $value ?></p>
                                                 <p class="user-status-time floaty">7 hours ago</p>
                                             </div>

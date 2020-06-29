@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Cursus - Sign In</title>
+    <title>Politic Data Mining</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, shrink-to-fit=9">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,22 +10,22 @@
     <meta name="author" content="Gambolthemes">
 
     <!-- Favicon Icon -->
-    <link rel="icon" type="image/png" href="<?= base_url('images/fav.png') ?>">
+    <link rel="icon" type="image/png" href="<?= base_url('public/images/fav.png') ?>">
 
     <!-- Stylesheets -->
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,500' rel='stylesheet'>
-    <link href='<?= base_url('vendor/unicons-2.0.1/css/unicons.css') ?>' rel='stylesheet'>
-    <link href="<?= base_url('css/vertical-responsive-menu.min.css') ?>" rel="stylesheet">
-    <link href="<?= base_url('css/style.css') ?>" rel="stylesheet">
-    <link href="<?= base_url('css/responsive.css') ?>" rel="stylesheet">
-    <link href="<?= base_url('css/night-mode.css') ?>" rel="stylesheet">
+    <link href='<?= base_url('public/vendor/unicons-2.0.1/css/unicons.css') ?>' rel='stylesheet'>
+    <link href="<?= base_url('public/css/vertical-responsive-menu.min.css') ?>" rel="stylesheet">
+    <link href="<?= base_url('public/css/style.css') ?>" rel="stylesheet">
+    <link href="<?= base_url('public/css/responsive.css') ?>" rel="stylesheet">
+    <link href="<?= base_url('public/css/night-mode.css') ?>" rel="stylesheet">
 
     <!-- Vendor Stylesheets -->
-    <link href="<?= base_url('vendor/fontawesome-free/css/all.min.css') ?>" rel="stylesheet">
-    <link href="<?= base_url('vendor/OwlCarousel/assets/owl.carousel.css') ?>" rel="stylesheet">
-    <link href="<?= base_url('vendor/OwlCarousel/assets/owl.theme.default.min.css') ?>" rel="stylesheet">
-    <link href="<?= base_url('vendor/bootstrap/css/bootstrap.min.css') ?>" rel="stylesheet">
-    <link href="<?= base_url('vendor/semantic/semantic.min.css') ?>" rel="stylesheet" type="text/css">
+    <link href="<?= base_url('public/vendor/fontawesome-free/css/all.min.css') ?>" rel="stylesheet">
+    <link href="<?= base_url('public/vendor/OwlCarousel/assets/owl.carousel.css') ?>" rel="stylesheet">
+    <link href="<?= base_url('public/vendor/OwlCarousel/assets/owl.theme.default.min.css') ?>" rel="stylesheet">
+    <link href="<?= base_url('public/vendor/bootstrap/css/bootstrap.min.css') ?>" rel="stylesheet">
+    <link href="<?= base_url('public/vendor/semantic/semantic.min.css') ?>" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -35,8 +35,8 @@
             <div class="row justify-content-lg-center justify-content-md-center">
                 <div class="col-lg-12">
                     <div class="main_logo25" id="logo">
-                        <a href="index.html"><img class="img-fluid" src="<?= base_url('images/logo.png') ?>" alt=""></a>
-                        <a href="index.html"><img class="logo-inverse img-fluid" src="<?= base_url('images/ct_logo.png') ?>" alt=""></a>
+                        <a href="index.html"><img class="img-fluid" src="<?= base_url('public/images/logo.png') ?>" alt=""></a>
+                        <a href="index.html"><img class="logo-inverse img-fluid" src="<?= base_url('public/images/ct_logo.png') ?>" alt=""></a>
                     </div>
                 </div>
 
@@ -72,19 +72,19 @@
                         <p class="sgntrm145"><a href="forgot_password.html">¿Se te olvidó tu contraseña?</a>.</p>
                         <p class="mb-0 mt-30 hvsng145">¿No tienes una cuenta? <a href="<?= base_url('sign_up') ?>">Regístrate</a></p>
                     </div>
-                    <div class="sign_footer"><img class="img-fluid" src="<?= base_url('images/sign_logo.png') ?>" alt="">© 2020 <strong>Politic Data Minning</strong>.Todos los derechos reservados.</div>
+                    <div class="sign_footer"><img class="img-fluid" src="<?= base_url('public/images/sign_logo.png') ?>" alt="">© 2020 <strong>Politic Data Minning</strong>.Todos los derechos reservados.</div>
                 </div>
             </div>
         </div>
     </div>
     <!-- Signup End -->
 
-    <script src="<?= base_url('js/jquery-3.3.1.min.js') ?>"></script>
-    <script src="<?= base_url('vendor/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
-    <script src="<?= base_url('vendor/OwlCarousel/owl.carousel.js') ?>"></script>
-    <script src="<?= base_url('vendor/semantic/semantic.min.js') ?>"></script>
-    <script src="<?= base_url('js/custom.js') ?>"></script>
-    <script src="<?= base_url('js/night-mode.js') ?>"></script>
+    <script src="<?= base_url('/public/js/jquery-3.3.1.min.js') ?>"></script>
+    <script src="<?= base_url('/public/vendor/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
+    <script src="<?= base_url('/public/vendor/OwlCarousel/owl.carousel.js') ?>"></script>
+    <script src="<?= base_url('/public/vendor/semantic/semantic.min.js') ?>"></script>
+    <script src="<?= base_url('/public/js/custom.js') ?>"></script>
+    <script src="<?= base_url('/public/js/night-mode.js') ?>"></script>
     <script>
         function statusChangeCallback(response) { // Called with the results from FB.getLoginStatus().
             console.log('statusChangeCallback');

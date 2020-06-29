@@ -34,26 +34,24 @@ class Database extends \CodeIgniter\Database\Config
 	public $default = [
 		'DSN'      => '',
 		'hostname' => '127.0.0.1',
-		'username' => 'postgres',
+		'username' => 'root',
 		'password' => 'e522a5bf',
 		'database' => 'facebook',
-		//'DBDriver' => 'MySQLi',
-		'DBDriver' => 'postgre',
+		'DBDriver' => 'MySQLi',
 		'DBPrefix' => 'fb_',
-		'pConnect' => false,
-		'DBDebug'  => (ENVIRONMENT !== 'development'),
-		'cacheOn'  => false,
+		'pConnect' => TRUE,
+		'DBDebug'  => TRUE,
+		'cacheOn'  => FALSE,
 		'cacheDir' => '',
-		'schema' => 'public, principal, red_social',
 		'charset'  => 'utf8',
 		'DBCollat' => 'utf8_general_ci',
 		'swapPre'  => '',
-		'encrypt'  => false,
-		'compress' => false,
-		'strictOn' => false,
+		'encrypt'  => FALSE,
+		'compress' => FALSE,
+		'strictOn' => FALSE,
 		'failover' => [],
-		'port'     => 5432,
 	];
+
 
 	/**
 	 * This database connection is used when

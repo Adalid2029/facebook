@@ -10,25 +10,25 @@
     <title>Politic Data Mining</title>
 
     <!-- Favicon Icon -->
-    <link href="<?= base_url('images/fav.png') ?>" rel="icon" type="image/png">
+    <link href="<?= base_url('public/images/fav.png') ?>" rel="icon" type="image/png">
 
     <!-- Stylesheets -->
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,500' rel='stylesheet'>
-    <link href='<?= base_url('vendor/unicons-2.0.1/css/unicons.css') ?>' rel='stylesheet'>
-    <link href="<?= base_url('css/vertical-responsive-menu.min.css') ?>" rel="stylesheet">
-    <link href="<?= base_url('css/style.css') ?>" rel="stylesheet">
-    <link href="<?= base_url('css/responsive.css') ?>" rel="stylesheet">
-    <link href="<?= base_url('css/night-mode.css') ?>" rel="stylesheet">
-    <link href="<?= base_url('css/instructor-dashboard.css') ?>" rel="stylesheet">
-    <link href="<?= base_url('css/instructor-responsive.css') ?>" rel="stylesheet">
+    <link href='<?= base_url('public/vendor/unicons-2.0.1/css/unicons.css') ?>' rel='stylesheet'>
+    <link href="<?= base_url('public/css/vertical-responsive-menu.min.css') ?>" rel="stylesheet">
+    <link href="<?= base_url('public/css/style.css') ?>" rel="stylesheet">
+    <link href="<?= base_url('public/css/responsive.css') ?>" rel="stylesheet">
+    <link href="<?= base_url('public/css/night-mode.css') ?>" rel="stylesheet">
+    <link href="<?= base_url('public/css/instructor-dashboard.css') ?>" rel="stylesheet">
+    <link href="<?= base_url('public/css/instructor-responsive.css') ?>" rel="stylesheet">
 
     <!-- Vendor Stylesheets -->
-    <link href="<?= base_url('vendor/fontawesome-free/css/all.min.css') ?>" rel="stylesheet">
-    <link href="<?= base_url('vendor/OwlCarousel/assets/owl.carousel.css') ?>" rel="stylesheet">
-    <link href="<?= base_url('vendor/OwlCarousel/assets/owl.theme.default.min.css') ?>" rel="stylesheet">
-    <link href="<?= base_url('vendor/bootstrap/css/bootstrap.min.css') ?>" rel="stylesheet">
-    <link href="<?= base_url('vendor/semantic/semantic.min.css') ?>" rel="stylesheet" type="text/css">
-    <link href="<?= base_url('vendor/toast-master/jquery.toast.css') ?>" rel="stylesheet" type="text/css">
+    <link href="<?= base_url('public/vendor/fontawesome-free/css/all.min.css') ?>" rel="stylesheet">
+    <link href="<?= base_url('public/vendor/OwlCarousel/assets/owl.carousel.css') ?>" rel="stylesheet">
+    <link href="<?= base_url('public/vendor/OwlCarousel/assets/owl.theme.default.min.css') ?>" rel="stylesheet">
+    <link href="<?= base_url('public/vendor/bootstrap/css/bootstrap.min.css') ?>" rel="stylesheet">
+    <link href="<?= base_url('public/vendor/semantic/semantic.min.css') ?>" rel="stylesheet" type="text/css">
+    <link href="<?= base_url('public/vendor/toast-master/jquery.toast.css') ?>" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -43,8 +43,8 @@
             <span class="collapse_menu--label"></span>
         </button>
         <div class="main_logo" id="logo">
-            <a href="index.html"><img class="img-fluid" src="images/logo.png" alt=""></a>
-            <a href="index.html"><img class="logo-inverse img-fluid" src="images/ct_logo.png" alt=""></a>
+            <a href="index.html"><img class="img-fluid" src="<?= base_url('public/images/logo.png') ?>" alt=""></a>
+            <a href="index.html"><img class="logo-inverse img-fluid" src="<?= base_url('images/ct_logo.png') ?>" alt=""></a>
         </div>
         <div class="search120 header_right">
             <div class="ui search">
@@ -70,7 +70,7 @@
                     <div class="menu dropdown_ms">
                         <a href="#" class="channel_my item">
                             <div class="profile_link">
-                                <img src="images/left-imgs/img-6.jpg" alt="">
+                                <img src="<?= base_url('public/images/left-imgs/img-6.jpg') ?>" alt="">
                                 <div class="pd_content">
                                     <h6>Zoena Singh</h6>
                                     <p>Hi! Sir, How are you. I ask you one thing please explain it this video price.</p>
@@ -80,7 +80,7 @@
                         </a>
                         <a href="#" class="channel_my item">
                             <div class="profile_link">
-                                <img src="images/left-imgs/img-5.jpg" alt="">
+                                <img src="<?= base_url('public/images/left-imgs/img-5.jpg') ?>" alt="">
                                 <div class="pd_content">
                                     <h6>Joy Dua</h6>
                                     <p>Hello, I paid you video tutorial but did not play error 404.</p>
@@ -90,7 +90,7 @@
                         </a>
                         <a href="#" class="channel_my item">
                             <div class="profile_link">
-                                <img src="images/left-imgs/img-8.jpg" alt="">
+                                <img src="<?= base_url('public/images/left-imgs/img-8.jpg') ?>" alt="">
                                 <div class="pd_content">
                                     <h6>Jass</h6>
                                     <p>Thanks Sir, Such a nice video.</p>
@@ -195,15 +195,15 @@
     <!-- Body End -->
 
 
-    <script src="<?= base_url('js/vertical-responsive-menu.min.js') ?>"></script>
-    <script src="<?= base_url('js/jquery-3.3.1.min.js') ?>"></script>
-    <script src="<?= base_url('js/facebook.js') ?>"></script>
-    <script src="<?= base_url('vendor/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
-    <script src="<?= base_url('vendor/OwlCarousel/owl.carousel.js') ?>"></script>
-    <script src="<?= base_url('vendor/semantic/semantic.min.js') ?>"></script>
-    <script src="<?= base_url('js/custom.js') ?>"></script>
-    <script src="<?= base_url('js/night-mode.js') ?>"></script>
-    <script src="<?= base_url('vendor/toast-master/jquery.toast.js') ?>"></script>
+    <script src="<?= base_url('public/js/vertical-responsive-menu.min.js') ?>"></script>
+    <script src="<?= base_url('public/js/jquery-3.3.1.min.js') ?>"></script>
+    <script src="<?= base_url('public/js/facebook.js') ?>"></script>
+    <script src="<?= base_url('public/vendor/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
+    <script src="<?= base_url('public/vendor/OwlCarousel/owl.carousel.js') ?>"></script>
+    <script src="<?= base_url('public/vendor/semantic/semantic.min.js') ?>"></script>
+    <script src="<?= base_url('public/js/custom.js') ?>"></script>
+    <script src="<?= base_url('public/js/night-mode.js') ?>"></script>
+    <script src="<?= base_url('public/vendor/toast-master/jquery.toast.js') ?>"></script>
 
 
 </body>
