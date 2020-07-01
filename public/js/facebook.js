@@ -1,6 +1,12 @@
 /** @format */
-
+window.loading = $('.spinner').hide();
 $(document)
+	.ajaxStart(function () {
+		loading.show();
+	})
+	.ajaxStop(function () {
+		loading.hide();
+	})
 	.ready(function () {
 		$('nav.vertical_nav').on('click', 'a.menu--link', function (event) {
 			event.preventDefault();
@@ -41,6 +47,19 @@ $(document)
 					console.log(jqXHR.responseText);
 				});
 		});
+		window.verPerfiles = function () {
+			$('#ver_perfiles').on('click', function () {
+				event.preventDefault();
+				event.stopPropagation();
+				$.ajax({
+					method: 'get',
+					url: '/main/listPeople',
+				}).done(function (resultado) {
+					$('.content').hide(0).html(resultado).fadeIn('slow');
+				});
+			});
+		};
+		verPerfiles();
 		window.simpleAlert = function (title, message, position, icon, hideAfter) {
 			/**
 			 * title: Titúlo de alerta

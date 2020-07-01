@@ -58,7 +58,7 @@
             <div class="col-xl-9 col-lg-8">
                 <div class="section3125">
                     <h4 class="item_title">Usuarios frecuentes</h4>
-                    <a href="live_streams.html" class="see150">Ver todo</a>
+                    <a id="ver_perfiles" href="#" class="see150">Ver todo</a>
                     <div class="la5lo1">
                         <div class="owl-carousel live_stream owl-theme">
                             <?php foreach ($personas as $key => $value) : ?>

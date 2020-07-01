@@ -21,6 +21,7 @@
     <link href="<?= base_url('public/css/night-mode.css') ?>" rel="stylesheet">
     <link href="<?= base_url('public/css/instructor-dashboard.css') ?>" rel="stylesheet">
     <link href="<?= base_url('public/css/instructor-responsive.css') ?>" rel="stylesheet">
+    <link href="<?= base_url('public/css/facebook.css') ?>" rel="stylesheet">
 
     <!-- Vendor Stylesheets -->
     <link href="<?= base_url('public/vendor/fontawesome-free/css/all.min.css') ?>" rel="stylesheet">
@@ -183,6 +184,9 @@
     <!-- Left Sidebar End -->
     <!-- Body Start -->
     <div class="wrapper">
+        <div class="spinner" style="display:none"></div>
+
+
         <div class="content">
             <?= $content ?>
         </div>
@@ -190,6 +194,7 @@
             <?= $footer ?>
         </footer>
     </div>
+
     <!-- Footer Start -->
     <!-- Footer End -->
     <!-- Body End -->

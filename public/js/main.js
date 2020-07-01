@@ -5,6 +5,7 @@ $(document).ready(function () {
 	//simpleAlert('EXITOSO', 'Se elimino el archivo ', 'top-right', 'success', 10000);
 	//simpleAlert('EXITOSO', 'Se elimino el archivo ', 'top-right', 'warning', 10000);
 	//simpleAlert('EXITOSO', 'Se elimino el archivo ', 'top-right', 'info', 10000);
+	verPerfiles();
 	$('.live_stream').owlCarousel({
 		items: 10,
 		loop: false,

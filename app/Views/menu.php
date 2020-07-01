@@ -1,7 +1,7 @@
 <div class="left_section menu_left" id="js-menu">
     <div class="left_section">
         <ul>
-            <li class="menu--item">
+            <li class="menu--item main">
                 <a href="<?= base_url('main/index') ?>" class="menu--link active" title="Inicio">
                     <i class='uil uil-home-alt menu--icon'></i>
                     <span class="menu--label">Inicio</span>
