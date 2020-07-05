@@ -160,5 +160,31 @@ class Data extends BaseController
 
     public function rechargeDataBasePosgrado()
     {
+        return $this->response->setJSON(array('success' => 'La carga de la Base de Datos se realizo correctamente'));
+
+        //return var_dump($this->request->getPost('respuesta'));
+        $data = json_decode($this->request->getPost('respuesta'));
+
+        foreach ($data->posts->data as $key0 => $data) {
+            var_dump($data);
+            // if (count($this->persona->where(array('id_facebook' => $id_facebook))->findAll()) == 0) {
+            //     $this->insertPerson(array(
+            //         'nombres' => trim($data['name_profile']),
+            //         'id_facebook' => trim($id_facebook),
+            //         'url_perfil_facebook' => trim($this->extractUrlFacebook($data['url_profile'])),
+            //         'url_imagen_facebook' => $data['image_profile']
+            //     ));
+            // }
+        }
+
+        // foreach ($this->request->getPost('respuesta')['posts']['data'] as $key0 => $data) {
+        //     if (isset($data['comments']['data'])) {
+        //         foreach ($data['comments']['data'] as $key1 => $comments) {
+        //             var_dump($comments['message']);
+        //         }
+        //     }
+        // }
+
+        //$this->response->setJSON(array('gol' => 'sk'));
     }
 }

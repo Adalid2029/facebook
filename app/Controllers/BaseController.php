@@ -23,6 +23,7 @@ use App\Models\DataPoliticModel;
 use App\Models\Comentario;
 use App\Models\Post;
 use App\Models\Persona;
+use App\Models\Querys;
 
 class BaseController extends Controller
 {
@@ -43,6 +44,7 @@ class BaseController extends Controller
 	public $post = null;
 	public $comentario = null;
 	public $persona = null;
+	public $querys = null;
 
 	protected $user = null;
 	protected $data = array();
@@ -59,6 +61,7 @@ class BaseController extends Controller
 		$this->post = new Post();
 		$this->comentario = new Comentario();
 		$this->persona = new Persona();
+		$this->querys = new Querys();
 	}
 	public function initController(\CodeIgniter\HTTP\RequestInterface $request, \CodeIgniter\HTTP\ResponseInterface $response, \Psr\Log\LoggerInterface $logger)
 	{

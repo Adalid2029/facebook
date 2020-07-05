@@ -57,7 +57,7 @@
             </div>
             <div class="col-xl-9 col-lg-8">
                 <div class="section3125">
-                    <h4 class="item_title">Usuarios frecuentes</h4>
+                    <h4 class="item_title">Usuarios registrados</h4>
                     <a id="ver_perfiles" href="#" class="see150">Ver todo</a>
                     <div class="la5lo1">
                         <div class="owl-carousel live_stream owl-theme">

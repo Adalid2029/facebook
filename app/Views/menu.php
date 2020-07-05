@@ -19,33 +19,16 @@
                     <span class="menu--label">Base de Datos</span>
                 </a>
             </li>
-            <li class="menu--item  menu--item__has_sub_menu">
-                <label class="menu--link" title="Reportes">
-                    <i class='uil uil-clipboard-alt menu--icon'></i>
+            <li class="menu--item ">
+                <a href="<?= base_url('report/index') ?>" class="menu--link" title="Reportes">
+                    <i class='uil uil-layers menu--icon'></i>
                     <span class="menu--label">Reportes</span>
-                </label>
-                <ul class="sub_menu">
-                    <li class="sub_menu--item">
-                        <a href="certification_center.html" class="sub_menu--link">Certification Center</a>
-                    </li>
-                    <li class="sub_menu--item">
-                        <a href="certification_start_form.html" class="sub_menu--link">Certification Fill Form</a>
-                    </li>
-                    <li class="sub_menu--item">
-                        <a href="certification_test_view.html" class="sub_menu--link">Test View</a>
-                    </li>
-                    <li class="sub_menu--item">
-                        <a href="certification_test__result.html" class="sub_menu--link">Test Result</a>
-                    </li>
-                    <li class="sub_menu--item">
-                        <a href="http://www.gambolthemes.net/html-items/edututs+/Instructor_Dashboard/my_certificates.html" class="sub_menu--link">My Certification</a>
-                    </li>
-                </ul>
+                </a>
             </li>
         </ul>
     </div>
 
-    <div class="left_section pt-2">
+    <!--<div class="left_section pt-2">
         <ul>
             <li class="menu--item">
                 <a href="setting.html" class="menu--link" title="Setting">
@@ -67,9 +50,9 @@
             </li>
 
         </ul>
-    </div>
+    </div>-->
     <div class="left_footer">
-        <ul>
+        <!--<ul>
             <li><a href="about_us.html">About</a></li>
             <li><a href="press.html">Press</a></li>
             <li><a href="contact_us.html">Contact Us</a></li>
@@ -78,9 +61,9 @@
             <li><a href="terms_of_use.html">Copyright</a></li>
             <li><a href="terms_of_use.html">Privacy Policy</a></li>
             <li><a href="terms_of_use.html">Terms</a></li>
-        </ul>
+        </ul>-->
         <div class="left_footer_content">
-            <p>© 2020 <strong>Cursus</strong>. All Rights Reserved.</p>
+            <p>© <?= date('Y') ?> <strong>Politic Data Mining</strong>. Todos los derechos reservados.</p>
         </div>
     </div>
 </div>

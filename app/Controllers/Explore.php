@@ -23,24 +23,49 @@ class Explore extends BaseController
     protected $contentFilters = [];
     public function index()
     {
+        $comentario = array();
+        $nombrePerfil = array();
+        $imagenPerfil = array();
+        $urlPerfil = array();
+        foreach ($this->querys->obtenerPostPersonaComentario() as $key => $value) {
+
+            $comentario[] =  $value['comentario'];
+            $nombrePerfil[] =  $value['nombres'] . $value['apellidos'];
+            $imagenPerfil[] =  $value['url_imagen_facebook'];
+            $urlPerfil[] = $value['url_perfil_facebook'];
+
+            //$this->get($value['comentario']);
+            //strpos($value['comentario'], 'evo') ? var_dump($value['comentario']) : null;
+            //var_dump($this->get($value['comentario']));
+        }
+        $this->data['comentarios'] = $comentario;
+        $this->data['nombres_perfiles'] = $nombrePerfil;
+        $this->data['imagen_perfiles'] = $imagenPerfil;
+        $this->data['url_perfiles'] = $urlPerfil;
         return $this->templater->view('explore/explore', $this->data);
     }
     public function searchText()
     {
         try {
-            $explode = array();
-            $users = array();
-            foreach ($this->comentario->findAll() as $key => $value) {
+            $comentario = array();
+            $nombrePerfil = array();
+            $imagenPerfil = array();
+            $urlPerfil = array();
+            foreach ($this->querys->obtenerPostPersonaComentario() as $key => $value) {
                 if (strpos($value['comentario'], trim($this->request->getPost('text')))) {
-                    $explode[] =  $value['comentario'];
-                    $users[] =  $value['id_facebook'];
+                    $comentario[] =  $value['comentario'];
+                    $nombrePerfil[] =  $value['nombres'] . $value['apellidos'];
+                    $imagenPerfil[] =  $value['url_imagen_facebook'];
+                    $urlPerfil[] = $value['url_perfil_facebook'];
                 }
                 //$this->get($value['comentario']);
                 //strpos($value['comentario'], 'evo') ? var_dump($value['comentario']) : null;
                 //var_dump($this->get($value['comentario']));
             }
-            $this->data['text_searched'] = $explode;
-            $this->data['users'] = $users;
+            $this->data['comentarios'] = $comentario;
+            $this->data['nombres_perfiles'] = $nombrePerfil;
+            $this->data['imagen_perfiles'] = $imagenPerfil;
+            $this->data['url_perfiles'] = $urlPerfil;
             return $this->templater->view('explore/explore', $this->data);
         } catch (\Exception $e) {
             die($e->getMessage());

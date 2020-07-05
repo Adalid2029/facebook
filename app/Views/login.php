@@ -128,6 +128,17 @@
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
 
+        function testAPIPage() {
+            FB.api(
+                '/128794501288356',
+                'GET', {
+                    "fields": "posts.limit(2){from,shares,comments{message,from,id,like_count,reactions,created_time,likes},full_picture,created_time,id,message,picture,timeline_visibility,likes{username,picture}}"
+                },
+                function(response) {
+                    // Insert your code here
+                }
+            );
+        }
 
         function testAPI() { // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
             console.log('Welcome!  Fetching your information.... ');
@@ -138,17 +149,6 @@
             });
         }
 
-        function testAPI() {
-            FB.api(
-                '/128794501288356',
-                'GET', {
-                    "fields": "posts.limit(2){from,shares,comments{message,from,id},full_picture,attachments{title}}"
-                },
-                function(response) {
-                    // Insert your code here
-                }
-            );
-        }
         //function testAPIPage() {
         //    FB.api('/128794501288356', 'GET', {
         //        "fields": "posts.limit(2){from,shares,comments{message,from},full_picture,attachments{title}}"

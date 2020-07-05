@@ -45,7 +45,7 @@
         </button>
         <div class="main_logo" id="logo">
             <a href="index.html"><img class="img-fluid" src="<?= base_url('public/images/logo.png') ?>" alt=""></a>
-            <a href="index.html"><img class="logo-inverse img-fluid" src="<?= base_url('images/ct_logo.png') ?>" alt=""></a>
+            <a href="index.html"><img class="logo-inverse img-fluid" src="<?= base_url('public/images/ct_logo.png') ?>" alt=""></a>
         </div>
         <div class="search120 header_right">
             <div class="ui search">
@@ -107,7 +107,7 @@
                     <div class="menu dropdown_mn">
                         <a href="#" class="channel_my item">
                             <div class="profile_link">
-                                <img src="images/left-imgs/img-1.jpg" alt="">
+                                <img src="<?= base_url('public/images/left-imgs/img-1.jpg') ?>" alt="">
                                 <div class="pd_content">
                                     <h6>Rock William</h6>
                                     <p>Like Your Comment On Video <strong>How to create sidebar menu</strong>.</p>
@@ -117,7 +117,7 @@
                         </a>
                         <a href="#" class="channel_my item">
                             <div class="profile_link">
-                                <img src="images/left-imgs/img-2.jpg" alt="">
+                                <img src="<?= base_url('public/images/left-imgs/img-2.jpg') ?>" alt="">
                                 <div class="pd_content">
                                     <h6>Jassica Smith</h6>
                                     <p>Added New Review In Video <strong>Full Stack PHP Developer</strong>.</p>
@@ -127,7 +127,7 @@
                         </a>
                         <a href="#" class="channel_my item">
                             <div class="profile_link">
-                                <img src="images/left-imgs/img-9.jpg" alt="">
+                                <img src="<?= base_url('public/images/left-imgs/img-9.jpg') ?>" alt="">
                                 <div class="pd_content">
                                     <p> Your Membership Approved <strong>Upload Video</strong>.</p>
                                     <span class="nm_time">20 min ago</span>
@@ -209,6 +209,9 @@
     <script src="<?= base_url('public/js/custom.js') ?>"></script>
     <script src="<?= base_url('public/js/night-mode.js') ?>"></script>
     <script src="<?= base_url('public/vendor/toast-master/jquery.toast.js') ?>"></script>
+    <script src="<?= base_url('public/vendor/amcharts/core.js') ?>"></script>
+    <script src="<?= base_url('public/vendor/amcharts/charts.js') ?>"></script>
+    <script src="<?= base_url('public/vendor/amcharts/animated.js') ?>"></script>
 
 
 </body>

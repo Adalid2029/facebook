@@ -142,7 +142,7 @@
                             <li>
                                 <a href="index.html">
                                     <div class="footer_logo">
-                                        <img src="images/logo1.svg" alt="">
+                                        <img src="<?= base_url('public/images/left-imgs/img-9.jpg') ?>" alt="">
                                     </div>
                                 </a>
                             </li>

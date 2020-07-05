@@ -22,13 +22,15 @@
                         <div class="row">
                             <?php foreach ($personas as $key => $value) : ?>
                                 <div class="col-md-3">
-                                    <div class="stream_1 mb-30">
+                                    <div class="stream_1 mb-30 user-avatar">
                                         <a href="<?= $value['url_perfil_facebook'] ?>" target="_blank" class="stream_bg">
                                             <img src="<?= $value['url_imagen_facebook'] ?>" alt="">
                                             <h4><?= $value['nombres'] . ' ' . $value['apellidos'] ?></h4>
                                             <p><?= $value['id_facebook'] ?><span></span></p>
+                                            <div class="msg__badge"><?= $value['total_comentario'] ?></div>
                                         </a>
                                     </div>
+
                                 </div>
                             <?php endforeach; ?>
                         </div>

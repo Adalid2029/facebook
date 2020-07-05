@@ -60,7 +60,7 @@
                 <div class="right_side">
                     <div class="fcrse_2 mb-30">
                         <div class="tutor_img">
-                            <a href="my_instructor_profile_view.html"><img src="images/left-imgs/img-10.jpg" alt=""></a>
+                            <a href="my_instructor_profile_view.html"><img src="<?= base_url('public/images/left-imgs/img-10.jpg') ?>" alt=""></a>
                         </div>
                         <div class="tutor_content_dt">
                             <div class="tutor150">

@@ -1,8 +1,23 @@
 /** @format */
 
 $(document).ready(function () {
-	$('#update_db_politic').on('click', function (e) {
+	$('.ver_post').on('click', function (e) {
 		e.preventDefault();
+		$('#post').modal({
+			backdrop: false,
+			keyboard: false,
+			focus: false,
+			show: true,
+		});
+		// $('#post')
+		// 	.modal({
+		// 		blurring: true,
+		// 	})
+		// 	.modal('show');
+		//$('#post').modal('show');
+		//parametrosModal('#post', 'Extracción', 'modal-lg', false, false);
+
+		return;
 		$.ajax({
 			url: '/data/rechargeDataBasePolitic',
 		})
@@ -18,4 +33,14 @@ $(document).ready(function () {
 				console.log(jqXHR.responseText);
 			});
 	});
+	function parametrosModal(idModal, titulo, tamano, onEscape, backdrop) {
+		$(idModal + '-title').html(titulo);
+		$(idModal + '-dialog').addClass(tamano);
+		$(idModal).modal({
+			backdrop: backdrop,
+			keyboard: onEscape,
+			focus: false,
+			show: true,
+		});
+	}
 });
