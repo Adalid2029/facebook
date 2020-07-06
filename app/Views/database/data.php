@@ -57,33 +57,7 @@
                 </div>
             </div>
             <div class="col-xl-3 col-lg-4">
-                <div class="right_side">
-                    <div class="fcrse_2 mb-30">
-                        <div class="tutor_img">
-                            <a href="my_instructor_profile_view.html"><img src="<?= base_url('public/images/left-imgs/img-10.jpg') ?>" alt=""></a>
-                        </div>
-                        <div class="tutor_content_dt">
-                            <div class="tutor150">
-                                <a href="my_instructor_profile_view.html" class="tutor_name">Joginder Singh</a>
-                                <div class="mef78" title="Verify">
-                                    <i class="uil uil-check-circle"></i>
-                                </div>
-                            </div>
-                            <div class="tutor_cate">Web Developer, Designer, and Teacher</div>
-                            <ul class="tutor_social_links">
-                                <li><a href="#" class="fb"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="#" class="tw"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="#" class="ln"><i class="fab fa-linkedin-in"></i></a></li>
-                                <li><a href="#" class="yu"><i class="fab fa-youtube"></i></a></li>
-                            </ul>
-                            <div class="tut1250">
-                                <span class="vdt15">615K Students</span>
-                                <span class="vdt15">12 Courses</span>
-                            </div>
-                            <a href="my_instructor_profile_view.html" class="prfle12link">Go To Profile</a>
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </div>
     </div>

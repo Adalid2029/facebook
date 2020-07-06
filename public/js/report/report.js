@@ -33,7 +33,7 @@ $(document).ready(function () {
 					categoryAxis.renderer.minGridDistance = 30;
 					categoryAxis.renderer.inside = true;
 					categoryAxis.renderer.labels.template.fill = am4core.color('#000');
-					categoryAxis.renderer.labels.template.fontSize = 9;
+					categoryAxis.renderer.labels.template.fontSize = 15;
 
 					var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
 					valueAxis.renderer.grid.template.strokeDasharray = '4,4';

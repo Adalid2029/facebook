@@ -1,6 +1,31 @@
 /** @format */
 
 $(document).ready(function () {
+	$('[name="text"]').keypress(function (e) {
+		var code = e.keyCode ? e.keyCode : e.which;
+		if (code == 13) {
+			$('#buscar_texto').click();
+		}
+	});
+	$('#buscar_texto').on('click', function (e) {
+		e.preventDefault();
+		$.ajax({
+			url: '/explore/searchText',
+			type: 'post',
+			data: { text: $('[name="text"]').val() },
+		})
+			.done(function (respuesta) {
+				if (typeof respuesta.exito !== 'undefined') {
+					$('.content').hide(0).html(respuesta.vista).fadeIn('slow');
+				} else {
+					simpleAlert('INFORMACIÓN', respuesta.error, 'top-right', 'warning', 6000);
+				}
+			})
+			.fail(function (jqXHR, textStatus) {
+				simpleAlert(jqXHR.statusText, jqXHR.status, 'top-right', 'error', 3000);
+				console.log(jqXHR.responseText);
+			});
+	});
 	$('.ver_post').on('click', function (e) {
 		e.preventDefault();
 		$('#post').modal({

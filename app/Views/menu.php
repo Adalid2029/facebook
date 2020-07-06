@@ -19,9 +19,9 @@
                     <span class="menu--label">Base de Datos</span>
                 </a>
             </li>
-            <li class="menu--item ">
+            <li class="menu--item">
                 <a href="<?= base_url('report/index') ?>" class="menu--link" title="Reportes">
-                    <i class='uil uil-layers menu--icon'></i>
+                    <i class='uil uil-clipboard-alt menu--icon'></i>
                     <span class="menu--label">Reportes</span>
                 </a>
             </li>

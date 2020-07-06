@@ -30,23 +30,7 @@ $(document)
 				$('.mainnav-toggle').click();
 			}
 		});
-		$('#search_text').on('click', function (e) {
-			e.preventDefault();
 
-			$.ajax({
-				url: '/explore/searchText',
-				type: 'post',
-				data: { text: $('[name="text"]').val() },
-			})
-				.done(function (data) {
-					simpleAlert('CORRECTO', data.success, 'top-right', 'success', 6000);
-					$('.content').hide(0).html(data).fadeIn('slow');
-				})
-				.fail(function (jqXHR, textStatus) {
-					simpleAlert(jqXHR.statusText, jqXHR.status, 'top-right', 'error', 3000);
-					console.log(jqXHR.responseText);
-				});
-		});
 		window.verPerfiles = function () {
 			$('#ver_perfiles').on('click', function () {
 				event.preventDefault();

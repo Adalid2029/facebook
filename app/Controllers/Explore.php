@@ -23,25 +23,6 @@ class Explore extends BaseController
     protected $contentFilters = [];
     public function index()
     {
-        $comentario = array();
-        $nombrePerfil = array();
-        $imagenPerfil = array();
-        $urlPerfil = array();
-        foreach ($this->querys->obtenerPostPersonaComentario() as $key => $value) {
-
-            $comentario[] =  $value['comentario'];
-            $nombrePerfil[] =  $value['nombres'] . $value['apellidos'];
-            $imagenPerfil[] =  $value['url_imagen_facebook'];
-            $urlPerfil[] = $value['url_perfil_facebook'];
-
-            //$this->get($value['comentario']);
-            //strpos($value['comentario'], 'evo') ? var_dump($value['comentario']) : null;
-            //var_dump($this->get($value['comentario']));
-        }
-        $this->data['comentarios'] = $comentario;
-        $this->data['nombres_perfiles'] = $nombrePerfil;
-        $this->data['imagen_perfiles'] = $imagenPerfil;
-        $this->data['url_perfiles'] = $urlPerfil;
         return $this->templater->view('explore/explore', $this->data);
     }
     public function searchText()
@@ -66,12 +47,15 @@ class Explore extends BaseController
             $this->data['nombres_perfiles'] = $nombrePerfil;
             $this->data['imagen_perfiles'] = $imagenPerfil;
             $this->data['url_perfiles'] = $urlPerfil;
-            return $this->templater->view('explore/explore', $this->data);
+            if (count($comentario) > 0) {
+                return $this->response->setJSON(array('exito' => true, 'vista' => $this->templater->view('explore/explore', $this->data)));
+            } else {
+                return $this->response->setJSON(array('error' => 'No se encontro ningun dato en la mineria'));
+            }
         } catch (\Exception $e) {
             die($e->getMessage());
+            return $this->response->setJSON(array('error' => $e->getMessage()));
         }
-        //return $this->response->setJSON(array('success' => 'La carga de la Base de Datos se realizo correctamente'));
-        //return $this->response->setJSON(array('error' => 'La carga de la Base de Datos no se realizo correctamente'));
     }
     public function get($content)
     {

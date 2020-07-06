@@ -4,6 +4,23 @@
             <div class="col-lg-12">
                 <h2 class="st_title"><i class="uil uil-comments"></i> Secuencias Encontradas</h2>
             </div>
+            <div class="search120 header_right">
+                <div class="ui search">
+                    <div class="ui left icon input swdh10">
+                        <input class="prompt srch10" type="text" name="text" placeholder="Buscar texto especifico, test y mas...">
+                        <i class='uil uil-search-alt icon icon1'></i>
+                    </div>
+                </div>
+            </div>
+            <div class="header_right">
+                <ul>
+                    <li>
+                        <a href="#" class="upload_btn" id="buscar_texto">
+                            <i class='uil uil-search-alt icon icon1'></i>
+                            Buscar texto especifico</a>
+                    </li>
+                </ul>
+            </div>
         </div>
         <div class="row">
             <div class="all_msg_bg">
@@ -22,7 +39,7 @@
                                                 <div class="ver_post" data-target="#post">
                                                     <p class="user-status-title"><span class="bold"><?= $nombres_perfiles[$key] ?></span></p>
                                                     <p class="user-status-text"><?= $value ?></p>
-                                                    <p class="user-status-time floaty">7 hours ago</p>
+                                                    <p class="user-status-time floaty"></p>
                                                 </div>
                                             </div>
                                         </div>
