@@ -1,5 +1,8 @@
 /** @format */
 $(document).ready(function () {
+	$('.ver_reporte').on('click', function () {
+		alert();
+	});
 	var cantidadComentariosPersona = [];
 	// Create chart instance
 	var chart = am4core.create('chartdiv', am4charts.XYChart);

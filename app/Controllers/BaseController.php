@@ -16,6 +16,8 @@ namespace App\Controllers;
  */
 
 use App\Libraries\Templater;
+use Mpdf\Mpdf;
+
 use CodeIgniter\Controller;
 use App\Models\AuthModel;
 use App\Models\DataPosgradoModel;
@@ -45,6 +47,7 @@ class BaseController extends Controller
 	public $comentario = null;
 	public $persona = null;
 	public $querys = null;
+	public $mpdf = null;
 
 	protected $user = null;
 	protected $data = array();
@@ -55,6 +58,8 @@ class BaseController extends Controller
 	{
 		$this->session = \Config\Services::session();
 		$this->templater = new Templater(\Config\Services::request());
+		$this->mpdf = new Mpdf();
+
 		$this->authModel = new AuthModel();
 		$this->dataPosgradoModel = new DataPosgradoModel();
 		$this->dataPoliticModel = new DataPoliticModel();

@@ -20,4 +20,9 @@ class Report extends BaseController
             }
         }
     }
+    public function print($id_facebook)
+    {
+        $this->mpdf->WriteHTML('<h1>Hello world!</h1>');
+        $this->mpdf->Output();
+    }
 }

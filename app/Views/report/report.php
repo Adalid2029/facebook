@@ -26,7 +26,10 @@
                     <div class="row">
                         <?php foreach ($personas as $key => $value) : ?>
                             <div class="col-md-3">
-                                <div class="stream_1 mb-30 user-avatar">
+                                <div class="course-overlay stream_1 mb-30 user-avatar">
+                                    <div class="crse_reviews ver_reporte" data-value="<?= $value['id_facebook'] ?>">
+                                        <i class="uil uil-star"></i>Reporte
+                                    </div>
                                     <a href="<?= $value['url_perfil_facebook'] ?>" target="_blank" class="stream_bg">
                                         <img src="<?= $value['url_imagen_facebook'] ?>" alt="">
                                         <h4><?= $value['nombres'] . ' ' . $value['apellidos'] ?></h4>
@@ -34,7 +37,6 @@
                                         <div class="msg__badge"><?= $value['total_comentario'] ?></div>
                                     </a>
                                 </div>
-
                             </div>
                         <?php endforeach; ?>
                     </div>
