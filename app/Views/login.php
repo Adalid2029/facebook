@@ -33,14 +33,17 @@
     <div class="sign_in_up_bg">
         <div class="container">
             <div class="row justify-content-lg-center justify-content-md-center">
-                <div class="col-lg-12">
+                <div class="col-sm-3">
                     <div class="main_logo25" id="logo">
-                        <a href="index.html"><img class="img-fluid" src="<?= base_url('public/images/logo.png') ?>" alt=""></a>
-                        <a href="index.html"><img class="logo-inverse img-fluid" src="<?= base_url('public/images/ct_logo.png') ?>" alt=""></a>
+                        <a href="index.html"><img class="img-fluid" src="<?= base_url('public/images/upea.png') ?>" alt=""></a>
+
                     </div>
                 </div>
-
-                <div class="col-lg-6 col-md-8">
+                <div class="col-sm-6">
+                    <div class="main_logo25" id="logo">
+                        <a href="index.html"><img class="img-fluid" src="<?= base_url('public/images/posgrado.png') ?>" alt=""></a>
+                        <a href="index.html"><img class="logo-inverse img-fluid" src="<?= base_url('public/images/ct_logo.png') ?>" alt=""></a>
+                    </div>
                     <div class="sign_form">
                         <h2>Bienvenido</h2>
                         <p>¡Inicie sesión en su cuenta Politic Data Minning!</p>
@@ -73,6 +76,12 @@
                         <p class="mb-0 mt-30 hvsng145">¿No tienes una cuenta? <a href="<?= base_url('sign_up') ?>">Regístrate</a></p>
                     </div>
                     <div class="sign_footer"><img class="img-fluid" src="<?= base_url('public/images/sign_logo.png') ?>" alt="">© 2020 <strong>Politic Data Minning</strong>.Todos los derechos reservados.</div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="main_logo25" id="logo">
+                        <a href="index.html"><img class="img-fluid" src="<?= base_url('public/images/sistemas.png') ?>" alt=""></a>
+
+                    </div>
                 </div>
             </div>
         </div>

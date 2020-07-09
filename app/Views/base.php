@@ -67,25 +67,20 @@
                                             <i class='uil uil-check-circle'></i>
                                         </div>
                                     </div>
-                                    <span>gambol943@gmail.com</span>
+                                    <span></span>
                                 </div>
                             </div>
-                            <a href="my_instructor_profile_view.html" class="dp_link_12">View Instructor Profile</a>
+
                         </div>
                         <div class="night_mode_switch__btn">
                             <a href="#" id="night-mode" class="btn-night-mode">
-                                <i class="uil uil-moon"></i> Night mode
+                                <i class="uil uil-moon"></i> Modo nocturno
                                 <span class="btn-night-mode-switch">
                                     <span class="uk-switch-button"></span>
                                 </span>
                             </a>
                         </div>
-                        <a href="instructor_dashboard.html" class="item channel_item">Cursus dashbofffffard</a>
-                        <a href="membership.html" class="item channel_item">Paid Memberships</a>
-                        <a href="setting.html" class="item channel_item">Setting</a>
-                        <a href="help.html" class="item channel_item">Help</a>
-                        <a href="feedback.html" class="item channel_item">Send Feedback</a>
-                        <a href="<?= base_url('finish') ?>" class="item channel_item">Sign Out</a>
+                        <a href="<?= base_url('finish') ?>" class="item channel_item">Cerrar Sesión</a>
                     </div>
                 </li>
             </ul>

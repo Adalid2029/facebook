@@ -22,7 +22,17 @@ class Report extends BaseController
     }
     public function print($id_facebook)
     {
-        $this->mpdf->WriteHTML('<h1>Hello world!</h1>');
+        $this->data['persona'] = $this->persona->where('id_facebook', $id_facebook)->findAll();
+        $this->data['comentarios'] = $this->comentario->where('id_facebook', $id_facebook)->findAll();
+        //return var_dump($this->data['persona']);
+        $this->mpdf->AddPageByArray([
+            'margin_left' => 0,
+            'margin_right' => 0,
+            'margin_top' => 0,
+            'margin_bottom' => 0,
+        ]);
+        $this->mpdf->WriteHTML(view('report/model', $this->data));
+        $this->response->setContentType('application/pdf');
         $this->mpdf->Output();
     }
 }

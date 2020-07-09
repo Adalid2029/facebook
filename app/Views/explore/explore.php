@@ -34,7 +34,6 @@
                                             <div class="user-status">
                                                 <div class="user-avatar">
                                                     <a href="<?= $url_perfiles[$key] ?>" target="_blank"><img src="<?= $imagen_perfiles[$key] ?>" alt="<?= $nombres_perfiles[$key] ?>"></a>
-                                                    <div class="msg__badge">2</div>
                                                 </div>
                                                 <div class="ver_post" data-target="#post">
                                                     <p class="user-status-title"><span class="bold"><?= $nombres_perfiles[$key] ?></span></p>

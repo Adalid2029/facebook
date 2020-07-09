@@ -61,11 +61,11 @@ $(document).ready(function () {
 					data: {
 						respuesta: JSON.stringify(response),
 					},
-					beforeSend: function (x) {
-						if (x && x.overrideMimeType) {
-							x.overrideMimeType('application/j-son;charset=UTF-8');
-						}
-					},
+					// beforeSend: function (x) {
+					// 	if (x && x.overrideMimeType) {
+					// 		x.overrideMimeType('application/j-son;charset=UTF-8');
+					// 	}
+					// },
 					dataType: 'json',
 				}).done(function (response) {
 					$.ajax({

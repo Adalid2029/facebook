@@ -58,7 +58,7 @@ class BaseController extends Controller
 	{
 		$this->session = \Config\Services::session();
 		$this->templater = new Templater(\Config\Services::request());
-		$this->mpdf = new Mpdf();
+		$this->mpdf = new Mpdf(['format' => 'Legal', 'mode' => 'utf-8']);
 
 		$this->authModel = new AuthModel();
 		$this->dataPosgradoModel = new DataPosgradoModel();

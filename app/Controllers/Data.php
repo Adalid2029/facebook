@@ -160,7 +160,6 @@ class Data extends BaseController
 
     public function rechargeDataBasePosgrado()
     {
-        return $this->response->setJSON(array('success' => 'La carga de la Base de Datos se realizo correctamente'));
 
         //return var_dump($this->request->getPost('respuesta'));
         $data = json_decode($this->request->getPost('respuesta'));
@@ -185,6 +184,6 @@ class Data extends BaseController
         //     }
         // }
 
-        //$this->response->setJSON(array('gol' => 'sk'));
+        return $this->response->setJSON(array('success' => 'La carga de la Base de Datos se realizo correctamente'));
     }
 }

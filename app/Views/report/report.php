@@ -27,9 +27,9 @@
                         <?php foreach ($personas as $key => $value) : ?>
                             <div class="col-md-3">
                                 <div class="course-overlay stream_1 mb-30 user-avatar">
-                                    <div class="crse_reviews ver_reporte" data-value="<?= $value['id_facebook'] ?>">
+                                    <a target="_blank" href="<?= base_url('report/print') . '/' . $value['id_facebook'] ?>" class="crse_reviews ver_reporte">
                                         <i class="uil uil-star"></i>Reporte
-                                    </div>
+                                    </a>
                                     <a href="<?= $value['url_perfil_facebook'] ?>" target="_blank" class="stream_bg">
                                         <img src="<?= $value['url_imagen_facebook'] ?>" alt="">
                                         <h4><?= $value['nombres'] . ' ' . $value['apellidos'] ?></h4>

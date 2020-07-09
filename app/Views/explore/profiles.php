@@ -27,7 +27,9 @@
                                             <img src="<?= $value['url_imagen_facebook'] ?>" alt="">
                                             <h4><?= $value['nombres'] . ' ' . $value['apellidos'] ?></h4>
                                             <p><?= $value['id_facebook'] ?><span></span></p>
-                                            <div class="msg__badge"><?= $value['total_comentario'] ?></div>
+                                            <?php if (isset($value['total_comentario'])) : ?>
+                                                <div class="msg__badge"><?= $value['total_comentario'] ?></div>
+                                            <?php endif ?>
                                         </a>
                                     </div>
 
