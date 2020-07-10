@@ -9,22 +9,60 @@ $(document).ready(function () {
 	});
 	$('#buscar_texto').on('click', function (e) {
 		e.preventDefault();
-		$.ajax({
-			url: '/explore/searchText',
-			type: 'post',
-			data: { text: $('[name="text"]').val() },
-		})
-			.done(function (respuesta) {
-				if (typeof respuesta.exito !== 'undefined') {
-					$('.content').hide(0).html(respuesta.vista).fadeIn('slow');
-				} else {
-					simpleAlert('INFORMACIÓN', respuesta.error, 'top-right', 'warning', 6000);
-				}
+		if ($('#posgrado').is(':checked') && $('#politica').is(':checked')) {
+			$.ajax({
+				url: '/explore/mineriaTodo',
+				type: 'post',
+				data: { text: $('[name="text"]').val() },
 			})
-			.fail(function (jqXHR, textStatus) {
-				simpleAlert(jqXHR.statusText, jqXHR.status, 'top-right', 'error', 3000);
-				console.log(jqXHR.responseText);
-			});
+				.done(function (respuesta) {
+					if (typeof respuesta.exito !== 'undefined') {
+						$('.content').hide(0).html(respuesta.vista).fadeIn('slow');
+					} else {
+						simpleAlert('INFORMACIÓN', respuesta.error, 'top-right', 'warning', 6000);
+					}
+				})
+				.fail(function (jqXHR, textStatus) {
+					simpleAlert(jqXHR.statusText, jqXHR.status, 'top-right', 'error', 3000);
+					console.log(jqXHR.responseText);
+				});
+		} else if ($('#posgrado').is(':checked')) {
+			$.ajax({
+				url: '/explore/mineriaPosgrado',
+				type: 'post',
+				data: { text: $('[name="text"]').val() },
+			})
+				.done(function (respuesta) {
+					if (typeof respuesta.exito !== 'undefined') {
+						$('.content').hide(0).html(respuesta.vista).fadeIn('slow');
+					} else {
+						simpleAlert('INFORMACIÓN', respuesta.error, 'top-right', 'warning', 6000);
+					}
+				})
+				.fail(function (jqXHR, textStatus) {
+					simpleAlert(jqXHR.statusText, jqXHR.status, 'top-right', 'error', 3000);
+					console.log(jqXHR.responseText);
+				});
+		} else if ($('#politica').is(':checked')) {
+			$.ajax({
+				url: '/explore/mineriaPolitica',
+				type: 'post',
+				data: { text: $('[name="text"]').val() },
+			})
+				.done(function (respuesta) {
+					if (typeof respuesta.exito !== 'undefined') {
+						$('.content').hide(0).html(respuesta.vista).fadeIn('slow');
+					} else {
+						simpleAlert('INFORMACIÓN', respuesta.error, 'top-right', 'warning', 6000);
+					}
+				})
+				.fail(function (jqXHR, textStatus) {
+					simpleAlert(jqXHR.statusText, jqXHR.status, 'top-right', 'error', 3000);
+					console.log(jqXHR.responseText);
+				});
+		} else {
+			simpleAlert('INFORMACIÓN', 'Por favor seleccione', 'top-right', 'warning', 6000);
+		}
 	});
 	$('.ver_post').on('click', function (e) {
 		e.preventDefault();

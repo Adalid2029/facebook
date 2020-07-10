@@ -22,6 +22,7 @@ $(document)
 					url: (url.substring(0, 1) === '/' ? '' : '/') + url,
 				}).done(function (resultado) {
 					content.hide(0).html(resultado).fadeIn('slow');
+					$('#toggleMenu').click();
 				});
 			} else {
 				content.html('<div class="alert alert-warning"><i class="fa fa-warning"></i> No se encuentra disponible el contenido solicitado.</div>');

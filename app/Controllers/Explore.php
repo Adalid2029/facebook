@@ -39,7 +39,36 @@ class Explore extends BaseController
         }
         print_r($comentarios);
     }
-    public function searchText()
+    public function mineriaTodo()
+    {
+        try {
+            $comentario = array();
+            $nombrePerfil = array();
+            $imagenPerfil = array();
+            $urlPerfil = array();
+            foreach ($this->querys->obtenerPostPersonaTodo(null, trim(strtolower($this->request->getPost('text')))) as $key => $value) {
+
+                $comentario[] =  $value['comentario'];
+                $nombrePerfil[] =  $value['nombres'] . $value['apellidos'];
+                $imagenPerfil[] =  $value['url_imagen_facebook'];
+                $urlPerfil[] = $value['url_perfil_facebook'];
+            }
+            $this->data['comentarios'] = $comentario;
+            $this->data['nombres_perfiles'] = $nombrePerfil;
+            $this->data['imagen_perfiles'] = $imagenPerfil;
+            $this->data['url_perfiles'] = $urlPerfil;
+            $this->data['cantidad_comentarios'] = count($comentario);
+            if (count($comentario) > 0) {
+                return $this->response->setJSON(array('exito' => true, 'vista' => $this->templater->view('explore/explore', $this->data)));
+            } else {
+                return $this->response->setJSON(array('error' => 'No se encontro ningun dato en la mineria'));
+            }
+        } catch (\Exception $e) {
+            die($e->getMessage());
+            return $this->response->setJSON(array('error' => $e->getMessage()));
+        }
+    }
+    public function mineriaPosgrado()
     {
         try {
             $comentario = array();
@@ -47,6 +76,35 @@ class Explore extends BaseController
             $imagenPerfil = array();
             $urlPerfil = array();
             foreach ($this->querys->obtenerPostPersonaComentarioPosgrado(null, trim(strtolower($this->request->getPost('text')))) as $key => $value) {
+
+                $comentario[] =  $value['comentario'];
+                $nombrePerfil[] =  $value['nombres'] . $value['apellidos'];
+                $imagenPerfil[] =  $value['url_imagen_facebook'];
+                $urlPerfil[] = $value['url_perfil_facebook'];
+            }
+            $this->data['comentarios'] = $comentario;
+            $this->data['nombres_perfiles'] = $nombrePerfil;
+            $this->data['imagen_perfiles'] = $imagenPerfil;
+            $this->data['url_perfiles'] = $urlPerfil;
+            $this->data['cantidad_comentarios'] = count($comentario);
+            if (count($comentario) > 0) {
+                return $this->response->setJSON(array('exito' => true, 'vista' => $this->templater->view('explore/explore', $this->data)));
+            } else {
+                return $this->response->setJSON(array('error' => 'No se encontro ningun dato en la mineria'));
+            }
+        } catch (\Exception $e) {
+            die($e->getMessage());
+            return $this->response->setJSON(array('error' => $e->getMessage()));
+        }
+    }
+    public function mineriaPolitica()
+    {
+        try {
+            $comentario = array();
+            $nombrePerfil = array();
+            $imagenPerfil = array();
+            $urlPerfil = array();
+            foreach ($this->querys->obtenerPostPersonaComentario(null, trim(strtolower($this->request->getPost('text')))) as $key => $value) {
 
                 $comentario[] =  $value['comentario'];
                 $nombrePerfil[] =  $value['nombres'] . $value['apellidos'];
@@ -61,6 +119,7 @@ class Explore extends BaseController
             $this->data['nombres_perfiles'] = $nombrePerfil;
             $this->data['imagen_perfiles'] = $imagenPerfil;
             $this->data['url_perfiles'] = $urlPerfil;
+            $this->data['cantidad_comentarios'] = count($comentario);
             if (count($comentario) > 0) {
                 return $this->response->setJSON(array('exito' => true, 'vista' => $this->templater->view('explore/explore', $this->data)));
             } else {

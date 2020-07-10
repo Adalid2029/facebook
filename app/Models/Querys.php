@@ -43,6 +43,7 @@ class Querys extends Database
         $builder->join('persona', 'persona.id_facebook = post.id_facebook');
         $builder->join('comentario', 'post.id_post = comentario.id_post');
         $builder->join('persona p', 'p.id_facebook = comentario.id_facebook');
+        $builder->where('persona.tipo', 'politica');
         $builder->orderBy('comentario.id_comentario', 'DESC');
 
 
@@ -59,16 +60,22 @@ class Querys extends Database
         $builder->join('persona p', 'p.id_facebook = comentario.id_facebook');
         $builder->where('persona.tipo', 'posgrado');
         $builder->orderBy('comentario.id_comentario', 'DESC');
-
-
-        // $query = $this->db->getLastQuery();
-        // echo (string) $query;
+        return $builder->like('lower(comentario)', $busqueda)->get()->getResultArray();
+    }
+    public function obtenerPostPersonaTodo($condicion = null, $busqueda = null)
+    {
+        $builder = $this->db->table('post');
+        $builder->select('*');
+        $builder->join('persona', 'persona.id_facebook = post.id_facebook');
+        $builder->join('comentario', 'post.id_post = comentario.id_post');
+        $builder->join('persona p', 'p.id_facebook = comentario.id_facebook');
+        $builder->orderBy('comentario.id_comentario', 'DESC');
         return $builder->like('lower(comentario)', $busqueda)->get()->getResultArray();
     }
     public function obtenerCantidadComentarioPersona($limite = 10, $orden = 'desc')
     {
         try {
-            $query = $this->db->query('select fp.*, fc.* from fb_persona fp,(select fc.id_facebook, count(fc.comentario) as total_comentario from fb_comentario fc group by fc.id_facebook)fc where fp.id_facebook =fc.id_facebook order by fc.total_comentario ' . $orden . ' limit ' . $limite);
+            $query = $this->db->query('select fp.*, fc.* from fb_persona fp,(select fc.id_facebook, count(fc.comentario) as total_comentario from fb_comentario fc group by fc.id_facebook)fc where where tipo="politica" and fp.id_facebook =fc.id_facebook order by fc.total_comentario ' . $orden . ' limit ' . $limite);
             return $query->getResultArray();
         } catch (\Exception $e) {
             die($e->getMessage());

@@ -4,20 +4,25 @@
             <div class="col-lg-12">
                 <h2 class="st_title"><i class="uil uil-comments"></i> Secuencias Encontradas</h2>
             </div>
-            <div class="search120 header_right">
+            <div class="header_right text-center">
                 <div class="ui search">
                     <div class="ui left icon input swdh10">
                         <input class="prompt srch10" type="text" name="text" placeholder="Buscar texto especifico, test y mas...">
                         <i class='uil uil-search-alt icon icon1'></i>
                     </div>
                 </div>
+                <label for="posgrado">Pagina Posgrado</label>
+                <input type="checkbox" id="posgrado" checked>
+                <label for="politica">Politica Externa</label>
+                <input type="checkbox" id="politica">
             </div>
             <div class="header_right">
                 <ul>
                     <li>
-                        <a href="#" class="upload_btn" id="buscar_texto">
+                        <a href="#" class="btn btn-danger" id="buscar_texto">
                             <i class='uil uil-search-alt icon icon1'></i>
                             Buscar texto especifico</a>
+                        <p>Resultados de la mineria <?= isset($cantidad_comentarios) ? $cantidad_comentarios : '' ?></p>
                     </li>
                 </ul>
             </div>

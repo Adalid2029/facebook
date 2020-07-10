@@ -26,12 +26,7 @@
                 </a>
             </li>
             </li>
-            <li class="menu--item">
-                <a href="<?= base_url('explore/index') ?>" class="menu--link" title="Politica">
-                    <i class='uil uil-search menu--icon'></i>
-                    <span class="menu--label">Politica</span>
-                </a>
-            </li>
+
         </ul>
     </div>
 

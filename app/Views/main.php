@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h2 class="st_title"><i class="uil uil-apps"></i> Panel de Instructor</h2>
+                <h2 class="st_title"><i class="uil uil-apps"></i> Panel de Administrador</h2>
             </div>
             <div class="col-xl-3 col-lg-6 col-md-6">
                 <div class="card_dash">
