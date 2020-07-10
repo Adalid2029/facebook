@@ -47,7 +47,7 @@
                     <div class="sign_form">
                         <h2>Bienvenido</h2>
                         <p>¡Inicie sesión en su cuenta Politic Data Minning!</p>
-                        <div class="fb-login-button" scope="public_profile,email" onlogin="checkLoginState();" data-size="large" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false" data-width=""></div>
+                        <!-- <div class="fb-login-button" scope="public_profile,email" onlogin="checkLoginState();" data-size="large" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false" data-width=""></div> -->
 
                         <form action="/auth/authenticate" method="post">
                             <div class="ui search focus mt-15">

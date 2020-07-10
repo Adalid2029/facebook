@@ -52,7 +52,7 @@ $(document).ready(function () {
 		function testAPIPage() {
 			$.ajax({
 				url:
-					'https://graph.facebook.com/v7.0/me?fields=posts.limit(2)%7Bfrom%2Cshares%2Ccomments%7Bmessage%2Cfrom%2Cid%2Ccreated_time%7D%2Cfull_picture%2Ccreated_time%2Cid%2Cmessage%2Cpicture%2Ctimeline_visibility%2Creactions.limit(1000)%7Bname%2Cprofile_type%2Cusername%2Clink%2Cpic_large%2Ctype%7D%2Clikes%7D&access_token=EAAZAr1hX7oW4BAAdWUnndSGmmZAPjwgGCTdCJHmu2JZCxOG1f6wvF9DLe64FMcs59sm2wkqAGyAsNu6oIwPIWmnRjEPZBBHWAB8I7G1ZC6xlOZBjNZBYw6dBZAoDkrTkNJXWTw3w9p47cMiwfotTPVcMsPJza8jLoZBes3XPrLuUZBZCAZDZD',
+					'https://graph.facebook.com/v7.0/me?fields=posts.limit(10)%7Bfrom%2Cshares%2Ccomments%7Bmessage%2Cfrom%2Cid%2Ccreated_time%7D%2Cfull_picture%2Ccreated_time%2Cid%2Cmessage%2Cpicture%2Ctimeline_visibility%2Creactions.limit(1000)%7Bname%2Cprofile_type%2Cusername%2Clink%2Cpic_large%2Ctype%7D%2Clikes%7D&access_token=EAAZAr1hX7oW4BAAdWUnndSGmmZAPjwgGCTdCJHmu2JZCxOG1f6wvF9DLe64FMcs59sm2wkqAGyAsNu6oIwPIWmnRjEPZBBHWAB8I7G1ZC6xlOZBjNZBYw6dBZAoDkrTkNJXWTw3w9p47cMiwfotTPVcMsPJza8jLoZBes3XPrLuUZBZCAZDZD',
 				method: 'GET',
 			}).done(function (response) {
 				$.ajax({

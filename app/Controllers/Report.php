@@ -6,13 +6,13 @@ class Report extends BaseController
 {
     public function index()
     {
-        $this->data['personas'] = $this->querys->obtenerCantidadComentarioPersona(20, 'desc');
+        $this->data['personas'] = $this->querys->obtenerCantidadComentarioPersonaPosgrado(20, 'desc');
         return $this->templater->view('report/report', $this->data);
     }
     public function ajaxCantidadComentarioPersona()
     {
         if ($this->request->isAJAX()) {
-            $cantidadComentarios = $this->querys->obtenerCantidadComentarioPersona(5, 'desc');
+            $cantidadComentarios = $this->querys->obtenerCantidadComentarioPersonaPosgrado(5, 'desc');
             if (is_array($cantidadComentarios)) {
                 return $this->response->setJSON(array('exito' => true, 'cantidad_comentarios' => $cantidadComentarios));
             } else {
@@ -31,6 +31,7 @@ class Report extends BaseController
             'margin_top' => 0,
             'margin_bottom' => 0,
         ]);
+        $this->mpdf->SetHTMLFooter(date('d-m-Y H:s'));
         $this->mpdf->WriteHTML(view('report/model', $this->data));
         $this->response->setContentType('application/pdf');
         $this->mpdf->Output();

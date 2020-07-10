@@ -62,6 +62,8 @@
         <?php endforeach; ?>
     </tbody>
 </table>
+
+
 <style>
     .table {
         width: 100%;

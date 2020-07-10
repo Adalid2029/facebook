@@ -7,12 +7,12 @@
                     <span class="menu--label">Inicio</span>
                 </a>
             </li>
+
             <li class="menu--item">
                 <a href="<?= base_url('explore/index') ?>" class="menu--link" title="Explorar">
                     <i class='uil uil-search menu--icon'></i>
                     <span class="menu--label">Explorar</span>
                 </a>
-            </li>
             <li class="menu--item">
                 <a href="<?= base_url('data/index') ?>" class="menu--link" title="Base de Datos">
                     <i class='uil uil-layers menu--icon'></i>
@@ -23,6 +23,13 @@
                 <a href="<?= base_url('report/index') ?>" class="menu--link" title="Reportes">
                     <i class='uil uil-clipboard-alt menu--icon'></i>
                     <span class="menu--label">Reportes</span>
+                </a>
+            </li>
+            </li>
+            <li class="menu--item">
+                <a href="<?= base_url('explore/index') ?>" class="menu--link" title="Politica">
+                    <i class='uil uil-search menu--icon'></i>
+                    <span class="menu--label">Politica</span>
                 </a>
             </li>
         </ul>

@@ -98,6 +98,13 @@ class Data extends BaseController
     {
         $this->persona->insert($persona);
     }
+    function actualizarPersona($datos, $condicion)
+    {
+        $this->persona
+            ->whereIn('id', [1, 2, 3])
+            ->set(['active' => 1])
+            ->update();
+    }
     function insertPostAndComments($posts, $comments)
     {
         $id_post = $this->post->insert($posts);
@@ -164,26 +171,87 @@ class Data extends BaseController
         //return var_dump($this->request->getPost('respuesta'));
         $data = json_decode($this->request->getPost('respuesta'));
 
-        foreach ($data->posts->data as $key0 => $data) {
-            var_dump($data);
-            // if (count($this->persona->where(array('id_facebook' => $id_facebook))->findAll()) == 0) {
-            //     $this->insertPerson(array(
-            //         'nombres' => trim($data['name_profile']),
-            //         'id_facebook' => trim($id_facebook),
-            //         'url_perfil_facebook' => trim($this->extractUrlFacebook($data['url_profile'])),
-            //         'url_imagen_facebook' => $data['image_profile']
-            //     ));
-            // }
+        foreach ($data->posts->data as $keyData => $data) {
+            try {
+                if (count($this->persona->where(array('id' => $data->from->id, 'tipo' => 'posgrado'))->findAll()) == 0) {
+                    $this->insertPerson(array(
+                        'nombres' => $data->from->name,
+                        'id' => $data->from->id,
+                        'id_facebook' => $data->from->id,
+                        'tipo' => 'posgrado'
+                    ));
+                }
+                if (isset($data->comments)) {
+                    foreach ($data->comments->data as $keyComment => $comment) {
+                        if (count($this->persona->where(array('id' => $comment->from->id, 'tipo' => 'posgrado'))->findAll()) == 0) {
+                            $this->insertPerson(array(
+                                'nombres' => trim($comment->from->name),
+                                'id' => trim($comment->from->id),
+                                'id_facebook' => trim($comment->from->id),
+                                'tipo' => 'posgrado'
+                            ));
+                        }
+                    }
+                }
+                if (isset($data->reactions)) {
+                    foreach ($data->reactions->data as $keyReaction => $reaction) {
+                        $existePersona = count($this->persona->where(array('id' => $reaction->id, 'tipo' => 'posgrado'))->findAll());
+                        if ($existePersona == 0) {
+                            $this->insertPerson(array(
+                                'nombres' => trim($reaction->name),
+                                'id' => trim($reaction->id),
+                                'id_facebook' => trim($reaction->id),
+                                'url_imagen_facebook' => trim($reaction->pic_large),
+                                'tipo' => 'posgrado'
+                            ));
+                        } elseif ($existePersona == 1) {
+                            $this->querys->persona(
+                                'update',
+                                array(
+                                    'nombres' => trim($reaction->name),
+                                    'id' => trim($reaction->id),
+                                    'id_facebook' => trim($reaction->id),
+                                    'url_imagen_facebook' => trim($reaction->pic_large),
+                                    'tipo' => 'posgrado'
+                                ),
+                                array('id' => $reaction->id, 'tipo' => 'posgrado'),
+                                null
+                            );
+                        }
+                    }
+                }
+                $cantidadPost = count($this->post->where(array('id' => $data->id, 'tipo' => 'posgrado'))->findAll());
+                if ($cantidadPost == 0) {
+                    $id_post = $this->post->insert(array(
+                        'id' => $data->id,
+                        'creacion_post' => date('Y-m-d H:i', strtotime($data->created_time)),
+                        'texto_post' => $data->message,
+                        'compartir' => $data->shares->count,
+                        'imagen_post' => $data->full_picture,
+                        'id_facebook' => $data->from->id,
+                        'tipo' => 'posgrado'
+                    ));
+                } elseif ($cantidadPost == 1) {
+                    $id_post = $this->post->where(array('id' => $data->id, 'tipo' => 'posgrado'))->findAll()[0]['id_post'];
+                }
+                if (isset($data->comments)) {
+                    foreach ($data->comments->data as $keyComment => $comment) {
+                        if (count($this->comentario->where(array('id' => $comment->id, 'tipo' => 'posgrado'))->findAll()) == 0) {
+                            $this->comentario->insert(array(
+                                'id' => $comment->id,
+                                'id_post' => $id_post,
+                                'id_facebook' => $comment->from->id,
+                                'comentario' => $comment->message,
+                                'creacion_comentario' => date('Y-m-d H:i', strtotime($comment->created_time)),
+                                'tipo' => 'posgrado'
+                            ));
+                        }
+                    }
+                }
+            } catch (\Exception $e) {
+                die($e->getMessage());
+            }
         }
-
-        // foreach ($this->request->getPost('respuesta')['posts']['data'] as $key0 => $data) {
-        //     if (isset($data['comments']['data'])) {
-        //         foreach ($data['comments']['data'] as $key1 => $comments) {
-        //             var_dump($comments['message']);
-        //         }
-        //     }
-        // }
-
         return $this->response->setJSON(array('success' => 'La carga de la Base de Datos se realizo correctamente'));
     }
 }

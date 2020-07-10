@@ -26,6 +26,9 @@ use App\Models\Comentario;
 use App\Models\Post;
 use App\Models\Persona;
 use App\Models\Querys;
+use Sentiment\Analyzer;
+use Statickidz\GoogleTranslate;
+
 
 class BaseController extends Controller
 {
@@ -48,6 +51,9 @@ class BaseController extends Controller
 	public $persona = null;
 	public $querys = null;
 	public $mpdf = null;
+	public $analyzer = null;
+	public $trans = null;
+
 
 	protected $user = null;
 	protected $data = array();
@@ -67,6 +73,8 @@ class BaseController extends Controller
 		$this->comentario = new Comentario();
 		$this->persona = new Persona();
 		$this->querys = new Querys();
+		$this->analyzer = new Analyzer();
+		$this->trans = new GoogleTranslate();
 	}
 	public function initController(\CodeIgniter\HTTP\RequestInterface $request, \CodeIgniter\HTTP\ResponseInterface $response, \Psr\Log\LoggerInterface $logger)
 	{

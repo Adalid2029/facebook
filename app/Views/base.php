@@ -101,7 +101,7 @@
             <?= $content ?>
         </div>
         <footer class="footer mt-30">
-            <?= $footer ?>
+            <!--<?= $footer ?>-->
         </footer>
     </div>
 

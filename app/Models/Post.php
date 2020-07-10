@@ -12,7 +12,7 @@ class Post extends Model
     protected $returnType     = 'array';
     protected $useSoftDeletes = true;
 
-    protected $allowedFields = ['texto_post', 'compartir', 'reacciones', 'reproducciones', 'imagen_post', 'id_facebook'];
+    protected $allowedFields = ['texto_post', 'compartir', 'reacciones', 'reproducciones', 'imagen_post', 'id_facebook', 'id', 'tipo', 'creacion_post'];
 
     protected $useTimestamps = true;
     protected $createdField  = 'created_at';

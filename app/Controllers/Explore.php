@@ -25,6 +25,20 @@ class Explore extends BaseController
     {
         return $this->templater->view('explore/explore', $this->data);
     }
+    public function analizarPost()
+    {
+        $comentarios = [];
+        $source = 'es';
+        $target = 'en';
+        foreach ($this->comentario->find([1, 2, 3, 4, 5]) as $key => $com) {
+            $comentarios[] = $this->trans->translate($source, $target, $com['comentario']);
+        }
+        foreach ($comentarios as $key => $com) {
+            $output_text_with_emoji = $this->analyzer->getSentiment($com);
+            print_r($output_text_with_emoji);
+        }
+        print_r($comentarios);
+    }
     public function searchText()
     {
         try {
@@ -32,13 +46,13 @@ class Explore extends BaseController
             $nombrePerfil = array();
             $imagenPerfil = array();
             $urlPerfil = array();
-            foreach ($this->querys->obtenerPostPersonaComentario() as $key => $value) {
-                if (strpos($value['comentario'], trim($this->request->getPost('text')))) {
-                    $comentario[] =  $value['comentario'];
-                    $nombrePerfil[] =  $value['nombres'] . $value['apellidos'];
-                    $imagenPerfil[] =  $value['url_imagen_facebook'];
-                    $urlPerfil[] = $value['url_perfil_facebook'];
-                }
+            foreach ($this->querys->obtenerPostPersonaComentarioPosgrado(null, trim(strtolower($this->request->getPost('text')))) as $key => $value) {
+
+                $comentario[] =  $value['comentario'];
+                $nombrePerfil[] =  $value['nombres'] . $value['apellidos'];
+                $imagenPerfil[] =  $value['url_imagen_facebook'];
+                $urlPerfil[] = $value['url_perfil_facebook'];
+
                 //$this->get($value['comentario']);
                 //strpos($value['comentario'], 'evo') ? var_dump($value['comentario']) : null;
                 //var_dump($this->get($value['comentario']));
