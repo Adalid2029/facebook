@@ -6,8 +6,8 @@ use CodeIgniter\Model;
 
 class Post extends Model
 {
-    protected $table = 'post';
-    protected $primaryKey = 'id_post';
+    protected $table = 'publicacion';
+    protected $primaryKey = 'id_publicacion';
 
     protected $returnType     = 'array';
     protected $useSoftDeletes = true;

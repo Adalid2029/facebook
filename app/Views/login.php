@@ -13,8 +13,8 @@
     <link rel="icon" type="image/png" href="<?= base_url('public/images/fav.png') ?>">
 
     <!-- Stylesheets -->
-    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,500' rel='stylesheet'>
-    <link href='<?= base_url('public/vendor/unicons-2.0.1/css/unicons.css') ?>' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,500' rel="stylesheet">
+    <link href="<?= base_url('public/vendor/unicons-2.0.1/css/unicons.css') ?>" rel="stylesheet">
     <link href="<?= base_url('public/css/vertical-responsive-menu.min.css') ?>" rel="stylesheet">
     <link href="<?= base_url('public/css/style.css') ?>" rel="stylesheet">
     <link href="<?= base_url('public/css/responsive.css') ?>" rel="stylesheet">
@@ -26,6 +26,7 @@
     <link href="<?= base_url('public/vendor/OwlCarousel/assets/owl.theme.default.min.css') ?>" rel="stylesheet">
     <link href="<?= base_url('public/vendor/bootstrap/css/bootstrap.min.css') ?>" rel="stylesheet">
     <link href="<?= base_url('public/vendor/semantic/semantic.min.css') ?>" rel="stylesheet" type="text/css">
+    <link href="<?= base_url('public/vendor/toast-master/jquery.toast.css') ?>" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -45,7 +46,7 @@
                     <div class="sign_form">
                         <h2>Bienvenido</h2>
                         <p>¡Inicie sesión en su cuenta Politic Data Minning!</p>
-                        <!-- <div class="fb-login-button" scope="public_profile,email" onlogin="checkLoginState();" data-size="large" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false" data-width=""></div> -->
+                        <div class="fb-login-button" scope="public_profile,email" onlogin="checkLoginState();" data-size="large" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false" data-width=""></div>
 
                         <form action="/auth/authenticate" method="post">
                             <div class="ui search focus mt-15">
@@ -80,21 +81,22 @@
     </div>
     <!-- Signup End -->
 
-    <script src="<?= base_url('/public/js/jquery-3.3.1.min.js') ?>"></script>
-    <script src="<?= base_url('/public/vendor/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
-    <script src="<?= base_url('/public/vendor/OwlCarousel/owl.carousel.js') ?>"></script>
-    <script src="<?= base_url('/public/vendor/semantic/semantic.min.js') ?>"></script>
-    <script src="<?= base_url('/public/js/custom.js') ?>"></script>
-    <script src="<?= base_url('/public/js/night-mode.js') ?>"></script>
+    <script src="<?= base_url('public/js/jquery-3.3.1.min.js') ?>"></script>
+    <script src="<?= base_url('public/vendor/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
+    <script src="<?= base_url('public/vendor/OwlCarousel/owl.carousel.js') ?>"></script>
+    <script src="<?= base_url('public/js/facebook.js') ?>"></script>
+    <script src="<?= base_url('public/vendor/semantic/semantic.min.js') ?>"></script>
+    <script src="<?= base_url('public/js/custom.js') ?>"></script>
+    <script src="<?= base_url('public/js/night-mode.js') ?>"></script>
+    <script src="<?= base_url('public/vendor/toast-master/jquery.toast.js') ?>"></script>
     <script>
         function statusChangeCallback(response) { // Called with the results from FB.getLoginStatus().
             console.log('statusChangeCallback');
             console.log(response); // The current login status of the person.
             if (response.status === 'connected') { // Logged into your webpage and Facebook.
-                testAPI();
-                testAPIPage();
-            } else { // Not logged into your webpage or we are unable to tell.
-                console.log('Please log into this webpage.');
+                testAPI(response);
+            } else {
+                simpleAlert('INFORMACIÓN', 'Por favor inicie sesión en esta página web', 'top-right', 'info', 6000);
             }
         }
 
@@ -129,27 +131,33 @@
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
 
-        function testAPIPage() {
-            FB.api(
-                '/128794501288356',
-                'GET', {
-                    "fields": "posts.limit(2){from,shares,comments{message,from,id,like_count,reactions,created_time,likes},full_picture,created_time,id,message,picture,timeline_visibility,likes{username,picture}}"
-                },
-                function(response) {
-                    // Insert your code here
-                }
-            );
-        }
 
-        function testAPI() { // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
-            console.log('Welcome!  Fetching your information.... ');
+        function testAPI(authResponse) { // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
             FB.api('/me', 'GET', {
-                "fields": "id,name"
+                "fields": "id,birthday,email,gender,first_name,last_name,address,link,languages,political,work,interested_in,picture{url},groups,location,age_range"
             }, function(response) {
-                console.log('Thanks for logging in, ' + response.name + '!');
+                $.ajax({
+                    url: '/auth/authenticatefacebook',
+                    method: 'post',
+                    data: {
+                        graphApi: JSON.stringify(response),
+                        authResponse: JSON.stringify(authResponse),
+                    }
+                })
             });
         }
 
+        // function testAPIPage() {
+        //     FB.api(
+        //         '/128794501288356',
+        //         'GET', {
+        //             "fields": "posts.limit(2){from,shares,comments{message,from,id,like_count,reactions,created_time,likes},full_picture,created_time,id,message,picture,timeline_visibility,likes{username,picture}}"
+        //         },
+        //         function(response) {
+        //             // Insert your code here
+        //         }
+        //     );
+        // }
         //function testAPIPage() {
         //    FB.api('/128794501288356', 'GET', {
         //        "fields": "posts.limit(2){from,shares,comments{message,from},full_picture,attachments{title}}"

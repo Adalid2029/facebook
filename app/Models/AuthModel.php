@@ -6,8 +6,8 @@ use CodeIgniter\Model;
 
 class AuthModel extends Model
 {
-    protected $table = 'view_users';
-    protected $primaryKey = 'id_user';
+    protected $table = 'view_usuarios';
+    protected $primaryKey = 'id_usuario';
 
     protected $returnType     = 'array';
     protected $useSoftDeletes = true;

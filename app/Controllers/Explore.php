@@ -31,6 +31,7 @@ class Explore extends BaseController
         $source = 'es';
         $target = 'en';
         foreach ($this->comentario->find([1, 2, 3, 4, 5]) as $key => $com) {
+            var_dump($com['comentario']);
             $comentarios[] = $this->trans->translate($source, $target, $com['comentario']);
         }
         foreach ($comentarios as $key => $com) {
@@ -110,10 +111,6 @@ class Explore extends BaseController
                 $nombrePerfil[] =  $value['nombres'] . $value['apellidos'];
                 $imagenPerfil[] =  $value['url_imagen_facebook'];
                 $urlPerfil[] = $value['url_perfil_facebook'];
-
-                //$this->get($value['comentario']);
-                //strpos($value['comentario'], 'evo') ? var_dump($value['comentario']) : null;
-                //var_dump($this->get($value['comentario']));
             }
             $this->data['comentarios'] = $comentario;
             $this->data['nombres_perfiles'] = $nombrePerfil;
@@ -134,7 +131,6 @@ class Explore extends BaseController
     {
         foreach ($this->getContentFilters() as $contentFilter) {
             $content = $contentFilter->transform($content);
-            //var_dump($content);
         }
         return $this->getKeywordScores($content);
     }

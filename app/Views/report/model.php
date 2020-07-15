@@ -1,14 +1,15 @@
 <table class="table">
     <thead>
         <tr>
-            <th scope="col"><img src="<?= base_url('public/images/upea.png') ?>" alt="auto" id="iow2" /></th>
-            <th scope="col"><img src="<?= base_url('public/images/posgrado.png') ?>" alt="" id="i2tc" /></th>
-            <th scope="col"><img src="<?= base_url('public/images/sistemas.png') ?>" alt="" id="io1ik" /></th>
+            <th scope="col"><img src="<?= base_url('public/images/upea.png') ?>" alt="auto" id="i2tc" /></th>
+            <th scope="col"><img src="<?= base_url('public/images/posgrado.png') ?>" alt="" id="i2t" /></th>
+            <th scope="col"><img src="<?= base_url('public/images/sistemas.png') ?>" alt="" id="i2tc" /></th>
         </tr>
     </thead>
 </table>
-<h1>Politic Data Mining</h1>
-<table class="table table-striped" cellspacing="10" cellpadding="10">
+<h3>Politic Data Mining</h3>
+<hr>
+<table class="table table-striped" cellspacing="10" cellpadding="10" style="border:1px dotted">
     <thead>
         <tr></tr>
         <tr></tr>
@@ -56,7 +57,7 @@
                 <th scope="row"><?= $key + 1 ?></th>
                 <td><?= $value['comentario'] ?></td>
                 <td><?= $value['id_post'] ?></td>
-                <td><?= $value['created_at'] ?></td>
+                <td><?= $value['creacion_comentario'] ?></td>
             </tr>
 
         <?php endforeach; ?>
@@ -65,6 +66,12 @@
 
 
 <style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        border: 0;
+    }
+
     .table {
         width: 100%;
     }
@@ -77,39 +84,17 @@
         background-color: #f2f2f2;
     }
 
-    * {
-        box-sizing: border-box;
-    }
-
-    body {
-        margin: 0;
-    }
-
-    * {
-        box-sizing: border-box;
-    }
 
     body {
         margin: 0;
     }
 
     #i2tc {
-        width: 100px;
+        width: 80px;
     }
 
-    #iow2 {
-        width: 100px;
-    }
-
-    #io1ik {
-        width: 100px;
-    }
-
-    .center {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        width: 50%;
+    #i2t {
+        height: 90px;
     }
 
     h1 {

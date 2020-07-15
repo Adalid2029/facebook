@@ -29,6 +29,13 @@ class Auth extends Controller
 		}
 	}
 
+	public function authenticateFacebook()
+	{
+		$graphApi = json_decode($this->request->getPost('graphApi'));
+		$authResponse = json_decode($this->request->getPost('authResponse'));
+		return var_dump($authResponse->authResponse->userID);
+		$userSearched = $this->authModel->where(array('id_api' => md5($authResponse->userID)))->findAll();
+	}
 	#authenticate = autentificar al usuario
 	public function authenticate()
 	{
@@ -36,7 +43,7 @@ class Auth extends Controller
 		$username = trim($this->request->getPost('username'));
 		$password = $this->request->getPost('password');
 		#Bucasmos en la base de datos los 2 datos que nos mando el Login
-		$userSearched = $this->authModel->where(array('username' => $username, 'pass' => md5($password)))->findAll();
+		$userSearched = $this->authModel->where(array('nombre_usuario' => $username, 'clave' => md5($password)))->findAll();
 
 		#Contamos si $userSearched es ugual a 1 si lo es entendemos que podemos aprobar el inicio de sesion
 		if (count($userSearched) == 1) {

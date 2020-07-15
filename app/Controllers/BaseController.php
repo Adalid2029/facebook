@@ -74,7 +74,7 @@ class BaseController extends Controller
 		$this->persona = new Persona();
 		$this->querys = new Querys();
 		$this->analyzer = new Analyzer();
-		//$this->trans = new GoogleTranslate();
+		$this->trans = new GoogleTranslate();
 	}
 	public function initController(\CodeIgniter\HTTP\RequestInterface $request, \CodeIgniter\HTTP\ResponseInterface $response, \Psr\Log\LoggerInterface $logger)
 	{
