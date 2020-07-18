@@ -64,10 +64,10 @@
                             <?php foreach ($personas as $key => $value) : ?>
                                 <div class="item">
                                     <div class="stream_1">
-                                        <a href="<?= $value['url_perfil_facebook'] ?>" target="_blank" class="stream_bg">
+                                        <a href="<?= isset($value['id_facebook']) ? $value['id_facebook'] : 'https://www.facebook.com/search/top/?q=' . $value['nombres'] . ' ' . $value['apellidos'] . '&epa=SEARCH_BOX' ?>" target="_blank" class="stream_bg">
                                             <img src="<?= $value['url_imagen_facebook'] ?>" alt="">
                                             <h4><?= $value['nombres'] . ' ' . $value['apellidos'] ?></h4>
-                                            <p class="small"><?= $value['id_facebook'] ?><span></span></p>
+                                            <p class="small"><?= isset($value['id_facebook']) ? $value['id_facebook'] : $value['id_api_facebook'] ?><span></span></p>
                                         </a>
                                     </div>
                                 </div>

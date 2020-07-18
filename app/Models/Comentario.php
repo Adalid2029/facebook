@@ -12,7 +12,7 @@ class Comentario extends Model
     protected $returnType     = 'array';
     protected $useSoftDeletes = true;
 
-    protected $allowedFields = ['comentario', 'id_post', 'id_facebook', 'id', 'tipo', 'creacion_comentario'];
+    protected $allowedFields = ['id_api_facebook', 'id_persona', 'tipo', 'comentario', 'id_publicacion', 'creacion_comentario'];
 
     protected $useTimestamps = true;
     protected $createdField  = 'created_at';

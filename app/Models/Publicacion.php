@@ -4,7 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class Post extends Model
+class Publicacion extends Model
 {
     protected $table = 'publicacion';
     protected $primaryKey = 'id_publicacion';
@@ -12,7 +12,7 @@ class Post extends Model
     protected $returnType     = 'array';
     protected $useSoftDeletes = true;
 
-    protected $allowedFields = ['texto_post', 'compartir', 'reacciones', 'reproducciones', 'imagen_post', 'id_facebook', 'id', 'tipo', 'creacion_post'];
+    protected $allowedFields = ['id_api_facebook', 'id_persona', 'texto_post', 'tipo', 'creacion_publicacion',  'compartir', 'reproducciones', 'imagen_publicacion'];
 
     protected $useTimestamps = true;
     protected $createdField  = 'created_at';

@@ -6,13 +6,13 @@ class Report extends BaseController
 {
     public function index()
     {
-        $this->data['personas'] = $this->querys->obtenerCantidadComentarioPersonaPosgrado(20, 'desc');
+        $this->data['personas'] = $this->querys->obtenerCantidadComentarioPersona('select', null, null, 20, 'desc');
         return $this->templater->view('report/report', $this->data);
     }
     public function ajaxCantidadComentarioPersona()
     {
         if ($this->request->isAJAX()) {
-            $cantidadComentarios = $this->querys->obtenerCantidadComentarioPersonaPosgrado(5, 'desc');
+            $cantidadComentarios = $this->querys->obtenerCantidadComentarioPersona('select', null, null, 5, 'desc');
             if (is_array($cantidadComentarios)) {
                 return $this->response->setJSON(array('exito' => true, 'cantidad_comentarios' => $cantidadComentarios));
             } else {
@@ -20,10 +20,10 @@ class Report extends BaseController
             }
         }
     }
-    public function print($id_facebook)
+    public function print($id_persona)
     {
-        $this->data['persona'] = $this->persona->where('id_facebook', $id_facebook)->findAll();
-        $this->data['comentarios'] = $this->comentario->where('id_facebook', $id_facebook)->findAll();
+        $this->data['persona'] = $this->persona->where('id_persona', $id_persona)->findAll();
+        $this->data['comentarios'] = $this->comentario->where('id_persona', $id_persona)->findAll();
         //return var_dump($this->data['persona']);
         $this->mpdf->AddPageByArray([
             'margin_left' => 0,

@@ -38,13 +38,15 @@
                                         <div class="chat__message__dt">
                                             <div class="user-status">
                                                 <div class="user-avatar">
-                                                    <a href="<?= $url_perfiles[$key] ?>" target="_blank"><img src="<?= $imagen_perfiles[$key] ?>" alt="<?= $nombres_perfiles[$key] ?>"></a>
+                                                    <a href="<?= isset($value['url_perfil_facebook']) ? $value['url_perfil_facebook'] : 'https://www.facebook.com/search/top/?q=' . $value['nombres'] . ' ' . $value['apellidos'] . '&epa=SEARCH_BOX' ?>" target="_blank">
+                                                        <img src="<?= $value['url_imagen_facebook'] ?>" alt="<?= $value['nombres'] . ' ' . $value['apellidos'] ?>">
+                                                    </a>
                                                 </div>
-                                                <div class="ver_post" data-target="#post">
-                                                    <p class="user-status-title"><span class="bold"><?= $nombres_perfiles[$key] ?></span></p>
-                                                    <p class="user-status-text"><?= $value ?></p>
-                                                    <p class="user-status-time floaty"></p>
-                                                </div>
+                                                <a href="<?= isset($value['id_api_facebook']) ? 'https://www.facebook.com/' . $value['id_api_facebook'] : '' ?>" target="_parent">
+                                                    <p class="user-status-title"><span class="bold"><?= $value['nombres'] . ' ' . $value['apellidos'] ?></span></p>
+                                                    <p class="user-status-text"><?= $value['comentario'] ?></p>
+                                                    <p class="user-status-time floaty">mbkbkj</p>
+                                                </a>
                                             </div>
                                         </div>
                                     <?php endforeach ?>

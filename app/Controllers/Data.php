@@ -13,12 +13,11 @@ class Data extends BaseController
     {
         try {
             $dataPolitic = $this->dataPoliticModel->findAll();
+            $comments = array();
+            $name_seller = array();
+            $id_fb_seller = array();
+            $image_seller = array();
             foreach ($dataPolitic as $i => $data) {
-                $comments = array();
-                $name_seller = array();
-                $id_fb_seller = array();
-                $image_seller = array();
-
                 try {
                     $html = str_get_html($data['html_comment']);
 
@@ -33,16 +32,29 @@ class Data extends BaseController
                         }
                     }
                 } catch (\Exception $e) {
+                    die($e->getMessage());
+                    return $this->response->setJSON(array('error' => $e->getMessage()));
                 }
 
-                $id_facebook = $this->extractIdFacebook($data['url_profile'], 2);
-                if (count($this->persona->where(array('id_facebook' => $id_facebook))->findAll()) == 0) {
-                    $this->insertPerson(array(
+                $id_facebook = trim($this->extractIdFacebook($data['url_profile'], 2));
+                $existePersona = count($this->persona->where(['id_facebook' => $id_facebook])->findAll());
+                if ($existePersona == 0) {
+                    $this->insertPerson([
                         'nombres' => trim($data['name_profile']),
-                        'id_facebook' => trim($id_facebook),
+                        'id_facebook' => $id_facebook,
                         'url_perfil_facebook' => trim($this->extractUrlFacebook($data['url_profile'])),
                         'url_imagen_facebook' => $data['image_profile']
-                    ));
+                    ]);
+                } elseif ($existePersona == 1) {
+                    $this->querys->persona(
+                        'update',
+                        [
+                            'nombres' => trim($data['name_profile']),
+                            'url_perfil_facebook' => trim($this->extractUrlFacebook($data['url_profile'])),
+                            'url_imagen_facebook' => $data['image_profile']
+                        ],
+                        ['id_facebook' => $id_facebook]
+                    );
                 }
                 foreach ($name_seller as $key => $name) {
                     if (count($this->persona->where(array('id_facebook' => $id_fb_seller[$key]))->findAll()) == 0) {
@@ -52,40 +64,31 @@ class Data extends BaseController
                             'url_perfil_facebook' => trim('https://www.facebook.com/' . $id_fb_seller[$key]),
                             'url_imagen_facebook' => trim($image_seller[$key])
                         ));
+                    } elseif ($existePersona == 1) {
+                        $this->querys->persona(
+                            'update',
+                            [
+                                'nombres' => trim($data['name_profile']),
+                                'url_perfil_facebook' => trim('https://www.facebook.com/' . $id_fb_seller[$key]),
+                                'url_imagen_facebook' => trim($image_seller[$key])
+                            ],
+                            ['id_facebook' => $id_fb_seller[$key]]
+                        );
                     }
                 }
             }
 
             foreach ($dataPolitic as $i => $data) {
-                $comments = array();
-                $name_seller = array();
-                $id_fb_seller = array();
-                $image_seller = array();
-                try {
-                    $html = str_get_html($data['html_comment']);
 
-                    if (!empty($html)) {
-                        foreach ($html->find('div._4eek') as $key => $ul) {
-                            $name_seller[] = trim($ul->find('a._6qw4')[0]->innertext);
-                            $image_seller[] = trim($ul->find('img._3me-')[0]->src);
-                            $id_fb_seller[] = $this->extractIdFacebook(trim($ul->find('a._3mf5')[0]->href), 1);
-                        }
-                        foreach ($html->find('span._3l3x') as $ul) {
-                            $comments[] = trim(strip_tags($ul->innertext));
-                        }
-                    }
-                } catch (\Exception $e) {
-                }
-                $this->insertPostAndComments(array(
+                $this->insertPostAndComments([
                     'texto_post' => trim($data['description']),
-                    'reacciones' => $this->extractReactions(trim($data['reactions'])),
                     'reproducciones' => trim($data['reproductions']),
-                    'imagen_post' => trim($data['img_publication']),
-                    'id_facebook' => trim($this->extractIdFacebook($data['url_profile'], 2)),
-                ), array(
+                    'imagen_publicacion' => trim($data['img_publication']),
+                    'id_persona' => $this->querys->persona('select', null, ['id_facebook' => trim($this->extractIdFacebook($data['url_profile'], 2))])[0]['id_persona'],
+                ], [
                     'comments' => $comments,
                     'id_fb_seller' => $id_fb_seller
-                ));
+                ]);
                 $this->dataPoliticModel->delete($data['id_data_politic']);
             }
             return $this->response->setJSON(array('success' => 'La carga de la Base de Datos se realizo correctamente'));
@@ -98,22 +101,16 @@ class Data extends BaseController
     {
         $this->persona->insert($persona);
     }
-    function actualizarPersona($datos, $condicion)
-    {
-        $this->persona
-            ->whereIn('id', [1, 2, 3])
-            ->set(['active' => 1])
-            ->update();
-    }
+
     function insertPostAndComments($posts, $comments)
     {
-        $id_post = $this->post->insert($posts);
+        $id_post = $this->publicacion->insert($posts);
 
         foreach ($comments['comments'] as $key => $comment) {
             $this->comentario->insert(array(
                 'comentario' => $comments['comments'][$key],
                 'id_post' => $id_post,
-                'id_facebook' => $comments['id_fb_seller'][$key]
+                'id_persona' => $this->querys->persona('select', null, ['id_facebook' => $comments['id_fb_seller'][$key]])[0]['id_persona']
             ));
         }
     }
@@ -173,77 +170,92 @@ class Data extends BaseController
 
         foreach ($data->posts->data as $keyData => $data) {
             try {
-                if (count($this->persona->where(array('id' => $data->from->id, 'tipo' => 'posgrado'))->findAll()) == 0) {
-                    $this->insertPerson(array(
+                if (count($this->persona->where(array('id_api_facebook' => $data->from->id))->findAll()) == 0) {
+                    $this->persona->insert([
+                        'id_api_facebook' => $data->from->id,
                         'nombres' => $data->from->name,
-                        'id' => $data->from->id,
-                        'id_facebook' => $data->from->id,
-                        'tipo' => 'posgrado'
-                    ));
+                        'tipo' => 'POSGRADO'
+                    ]);
                 }
                 if (isset($data->comments)) {
                     foreach ($data->comments->data as $keyComment => $comment) {
-                        if (count($this->persona->where(array('id' => $comment->from->id, 'tipo' => 'posgrado'))->findAll()) == 0) {
-                            $this->insertPerson(array(
-                                'nombres' => trim($comment->from->name),
-                                'id' => trim($comment->from->id),
-                                'id_facebook' => trim($comment->from->id),
-                                'tipo' => 'posgrado'
-                            ));
+                        if (count($this->persona->where(array('id_api_facebook' => $comment->from->id))->findAll()) == 0) {
+                            $this->persona->insert([
+                                'nombres' => $comment->from->name,
+                                'id_api_facebook' => $comment->from->id,
+                                'tipo' => 'POSGRADO'
+                            ]);
                         }
                     }
                 }
                 if (isset($data->reactions)) {
                     foreach ($data->reactions->data as $keyReaction => $reaction) {
-                        $existePersona = count($this->persona->where(array('id' => $reaction->id, 'tipo' => 'posgrado'))->findAll());
+                        $existePersona = count($this->persona->where(array('id_api_facebook' => $reaction->id))->findAll());
                         if ($existePersona == 0) {
-                            $this->insertPerson(array(
-                                'nombres' => trim($reaction->name),
-                                'id' => trim($reaction->id),
-                                'id_facebook' => trim($reaction->id),
-                                'url_imagen_facebook' => trim($reaction->pic_large),
-                                'tipo' => 'posgrado'
-                            ));
+                            $this->persona->insert([
+                                'nombres' => $reaction->name,
+                                'id_api_facebook' => $reaction->id,
+                                'url_imagen_facebook' => $reaction->pic_large,
+                                'tipo' => 'POSGRADO'
+                            ]);
                         } elseif ($existePersona == 1) {
                             $this->querys->persona(
                                 'update',
-                                array(
-                                    'nombres' => trim($reaction->name),
-                                    'id' => trim($reaction->id),
-                                    'id_facebook' => trim($reaction->id),
-                                    'url_imagen_facebook' => trim($reaction->pic_large),
-                                    'tipo' => 'posgrado'
-                                ),
-                                array('id' => $reaction->id, 'tipo' => 'posgrado'),
-                                null
+                                [
+                                    'url_imagen_facebook' => $reaction->pic_large,
+                                    'tipo' => 'POSGRADO'
+                                ],
+                                ['id_api_facebook' => $reaction->id]
                             );
                         }
                     }
                 }
-                $cantidadPost = count($this->post->where(array('id' => $data->id, 'tipo' => 'posgrado'))->findAll());
+                # Iniciamos con las publicaciones
+                $cantidadPost = count($this->publicacion->where(array('id_api_facebook' => $data->id, 'tipo' => 'POSGRADO'))->findAll());
                 if ($cantidadPost == 0) {
-                    $id_post = $this->post->insert(array(
-                        'id' => $data->id,
-                        'creacion_post' => date('Y-m-d H:i', strtotime($data->created_time)),
+                    $idPublicacion = $this->publicacion->insert([
+                        'id_api_facebook' => $data->id,
+                        'id_persona' => $this->querys->persona('select', null, ['id_api_facebook' => $data->from->id])[0]['id_persona'],
+                        'creacion_publicacion' => date('Y-m-d H:i', strtotime($data->created_time)),
                         'texto_post' => $data->message,
                         'compartir' => $data->shares->count,
-                        'imagen_post' => $data->full_picture,
-                        'id_facebook' => $data->from->id,
-                        'tipo' => 'posgrado'
-                    ));
+                        'imagen_publicacion' => $data->full_picture,
+                        'tipo' => 'POSGRADO'
+                    ]);
                 } elseif ($cantidadPost == 1) {
-                    $id_post = $this->post->where(array('id' => $data->id, 'tipo' => 'posgrado'))->findAll()[0]['id_post'];
+                    $this->querys->publicacion('update', [
+                        'id_persona' => $this->querys->persona('select', null, ['id_api_facebook' => $data->from->id])[0]['id_persona'],
+                        'creacion_publicacion' => date('Y-m-d H:i', strtotime($data->created_time)),
+                        'texto_post' => $data->message,
+                        'compartir' => $data->shares->count,
+                        'imagen_publicacion' => $data->full_picture
+                    ], ['id_api_facebook' => $data->id, 'tipo' => 'POSGRADO']);
+
+                    $idPublicacion = $this->publicacion->where(array('id_api_facebook' => $data->id, 'tipo' => 'POSGRADO'))->findAll()[0]['id_publicacion'];
                 }
+                // if (isset($data->reactions)) {
+                //     foreach ($data->reactions->data as $keyReaction => $reaction) {
+                //         $existeReaccion = count($this->persona->where(array('id' => $reaction->id, 'tipo' => 'POSGRADO'))->findAll());
+                //         if ($existePersona == 0) {
+                //             $this->persona->insert([
+                //                 'nombres' => $reaction->name,
+                //                 'id' => $reaction->id,
+                //                 'url_imagen_facebook' => $reaction->pic_large,
+                //                 'tipo' => 'POSGRADO'
+                //             ]);
+                //         }
+                //     }
+                // }
                 if (isset($data->comments)) {
                     foreach ($data->comments->data as $keyComment => $comment) {
-                        if (count($this->comentario->where(array('id' => $comment->id, 'tipo' => 'posgrado'))->findAll()) == 0) {
+                        if (count($this->comentario->where(array('id_api_facebook' => $comment->id, 'tipo' => 'POSGRADO'))->findAll()) == 0) {
                             $this->comentario->insert(array(
-                                'id' => $comment->id,
-                                'id_post' => $id_post,
-                                'id_facebook' => $comment->from->id,
+                                'id_persona' => $this->querys->persona('select', null, ['id_api_facebook' => $comment->from->id])[0]['id_persona'],
+                                'id_api_facebook' => $comment->id,
+                                'id_publicacion' => $idPublicacion,
                                 'comentario' => $comment->message,
                                 'creacion_comentario' => date('Y-m-d H:i', strtotime($comment->created_time)),
-                                'tipo' => 'posgrado'
+                                'tipo' => 'POSGRADO'
                             ));
                         }
                     }

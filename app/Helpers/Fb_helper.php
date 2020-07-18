@@ -1,12 +1,20 @@
 <?php
 
 use App\Models\AuthModel;
+use App\Models\Querys;
 
 if (!function_exists('authenticated')) {
     function authenticated()
     {
-        $id_user = (new AuthModel())->find(array('id_user' => (\Config\Services::session())->get('id_user')));
-        return (is_null($id_user) ? false : $id_user);
+        $idUser = (new Querys())->view_usuarios('select', ['id_usuario' => (\Config\Services::session())->get('id_usuario')]);
+        $idApi = (new Querys())->view_usuarios('select', ['id_api' => (\Config\Services::session())->get('id_api')]);
+        if (!empty($idUser)) {
+            return $idUser;
+        } elseif (!empty($idApi)) {
+            return $idApi;
+        } else {
+            return false;
+        }
     }
 }
 
@@ -14,10 +22,10 @@ if (!function_exists('css_tag')) {
     function css_tag($src = '', $type = 'text/css')
     {
         $css = '<st' . 'yle type="' . $type . '">';
-        if (is_file(FCPATH . 'css/' . $src . '.css')) {
+        if (is_file(FCPATH . 'public/css/' . $src . '.css')) {
             if (strpos($src, '://') === FALSE) {
                 ob_start();
-                require(FCPATH . 'assets/css/' . $src . '.' . 'css');
+                require(FCPATH . 'public/css/' . $src . '.' . 'css');
                 $css .= ob_get_clean();
             }
         }

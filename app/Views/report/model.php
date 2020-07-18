@@ -56,7 +56,7 @@
             <tr>
                 <th scope="row"><?= $key + 1 ?></th>
                 <td><?= $value['comentario'] ?></td>
-                <td><?= $value['id_post'] ?></td>
+                <td><?= $value['id_publicacion'] ?></td>
                 <td><?= $value['creacion_comentario'] ?></td>
             </tr>
 

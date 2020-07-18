@@ -20,10 +20,9 @@ use Mpdf\Mpdf;
 
 use CodeIgniter\Controller;
 use App\Models\AuthModel;
-use App\Models\DataPosgradoModel;
 use App\Models\DataPoliticModel;
 use App\Models\Comentario;
-use App\Models\Post;
+use App\Models\Publicacion;
 use App\Models\Persona;
 use App\Models\Querys;
 use Sentiment\Analyzer;
@@ -44,9 +43,8 @@ class BaseController extends Controller
 	public $session = null;
 	public $templater = null;
 	public $authModel = null;
-	public $dataPosgradoModel = null;
 	public $dataPoliticModel = null;
-	public $post = null;
+	public $publicacion = null;
 	public $comentario = null;
 	public $persona = null;
 	public $querys = null;
@@ -67,9 +65,8 @@ class BaseController extends Controller
 		$this->mpdf = new Mpdf(['format' => 'Legal', 'mode' => 'utf-8']);
 
 		$this->authModel = new AuthModel();
-		$this->dataPosgradoModel = new DataPosgradoModel();
 		$this->dataPoliticModel = new DataPoliticModel();
-		$this->post = new Post();
+		$this->publicacion = new Publicacion();
 		$this->comentario = new Comentario();
 		$this->persona = new Persona();
 		$this->querys = new Querys();

@@ -27,13 +27,13 @@
                         <?php foreach ($personas as $key => $value) : ?>
                             <div class="col-md-3">
                                 <div class="course-overlay stream_1 mb-30 user-avatar">
-                                    <a target="_blank" href="<?= base_url('report/print') . '/' . $value['id_facebook'] ?>" class="crse_reviews ver_reporte">
+                                    <a target="_blank" href="<?= base_url('report/print') . '/' . $value['id_persona'] ?>" class="crse_reviews ver_reporte">
                                         <i class="uil uil-star"></i>Reporte
                                     </a>
-                                    <a href="<?= $value['url_perfil_facebook'] ?>" target="_blank" class="stream_bg">
+                                    <a href="<?= isset($value['id_facebook']) ? $value['id_facebook'] : 'https://www.facebook.com/search/top/?q=' . $value['nombres'] . ' ' . $value['apellidos'] . '&epa=SEARCH_BOX' ?>" target="_blank" class="stream_bg">
                                         <img src="<?= $value['url_imagen_facebook'] ?>" alt="">
                                         <h4><?= $value['nombres'] . ' ' . $value['apellidos'] ?></h4>
-                                        <p><?= $value['id_facebook'] ?><span></span></p>
+                                        <p><?= isset($value['id_facebook']) ? $value['id_facebook'] : $value['id_api_facebook'] ?><span></span></p>
                                         <div class="msg__badge"><?= $value['total_comentario'] ?></div>
                                     </a>
                                 </div>

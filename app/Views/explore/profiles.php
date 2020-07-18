@@ -23,10 +23,10 @@
                             <?php foreach ($personas as $key => $value) : ?>
                                 <div class="col-md-3">
                                     <div class="stream_1 mb-30 user-avatar">
-                                        <a href="<?= $value['url_perfil_facebook'] ?>" target="_blank" class="stream_bg">
+                                        <a href="<?= isset($value['id_facebook']) ? $value['id_facebook'] : 'https://www.facebook.com/search/top/?q=' . $value['nombres'] . ' ' . $value['apellidos'] . '&epa=SEARCH_BOX' ?>" target="_blank" class="stream_bg">
                                             <img src="<?= $value['url_imagen_facebook'] ?>" alt="">
                                             <h4><?= $value['nombres'] . ' ' . $value['apellidos'] ?></h4>
-                                            <p><?= $value['id_facebook'] ?><span></span></p>
+                                            <p><?= isset($value['id_facebook']) ? $value['id_facebook'] : $value['id_api_facebook'] ?><span></span></p>
                                             <?php if (isset($value['total_comentario'])) : ?>
                                                 <div class="msg__badge"><?= $value['total_comentario'] ?></div>
                                             <?php endif ?>

@@ -19,6 +19,7 @@
     <link href="<?= base_url('public/css/style.css') ?>" rel="stylesheet">
     <link href="<?= base_url('public/css/responsive.css') ?>" rel="stylesheet">
     <link href="<?= base_url('public/css/night-mode.css') ?>" rel="stylesheet">
+    <link href="<?= base_url('public/css/facebook.css') ?>" rel="stylesheet">
 
     <!-- Vendor Stylesheets -->
     <link href="<?= base_url('public/vendor/fontawesome-free/css/all.min.css') ?>" rel="stylesheet">
@@ -31,6 +32,7 @@
 
 <body>
     <!-- Signup Start -->
+    <div class="spinner" style="display:none"></div>
     <div class="sign_in_up_bg">
         <div class="container">
             <div class="row justify-content-lg-center justify-content-md-center">
@@ -46,18 +48,18 @@
                     <div class="sign_form">
                         <h2>Bienvenido</h2>
                         <p>¡Inicie sesión en su cuenta Politic Data Minning!</p>
-                        <div class="fb-login-button" scope="public_profile,email" onlogin="checkLoginState();" data-size="large" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false" data-width=""></div>
-
+                        <!-- <div class="fb-login-button" scope="public_profile,email" onlogin="checkLoginState();" data-size="large" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false" data-width=""></div> -->
+                        <div class="fb-login-button" scope="public_profile,email,user_likes" onlogin="checkLoginState();" data-size="medium" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="true" data-width=""></div>
                         <form action="/auth/authenticate" method="post">
                             <div class="ui search focus mt-15">
                                 <div class="ui left icon input swdh95">
-                                    <input class="prompt srch_explore" type="text" name="username" value="" id="id_email" required="" maxlength="64" placeholder="Email Address">
+                                    <input class="prompt srch_explore" type="text" name="username" value="" id="id_email" required="" maxlength="64" placeholder="Usuario, Correo Electronico">
                                     <i class="uil uil-envelope icon icon2"></i>
                                 </div>
                             </div>
                             <div class="ui search focus mt-15">
                                 <div class="ui left icon input swdh95">
-                                    <input class="prompt srch_explore" type="password" name="password" value="" id="id_password" required="" maxlength="64" placeholder="Password">
+                                    <input class="prompt srch_explore" type="password" name="password" value="" id="id_password" required="" maxlength="64" placeholder="Contraseña">
                                     <i class="uil uil-key-skeleton-alt icon icon2"></i>
                                 </div>
                             </div>
@@ -108,28 +110,7 @@
         }
 
 
-        window.fbAsyncInit = function() {
-            FB.init({
-                appId: 1807417096249710,
-                cookie: true, // Enable cookies to allow the server to access the session.
-                xfbml: true, // Parse social plugins on this webpage.
-                version: 'v7.0' // Use this Graph API version for this call.
-            });
 
-            FB.getLoginStatus(function(response) { // Called after the JS SDK has been initialized.
-                statusChangeCallback(response); // Returns the login status.
-            });
-        };
-
-
-        (function(d, s, id) { // Load the SDK asynchronously
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s);
-            js.id = id;
-            js.src = "https://connect.facebook.net/es_LA/sdk.js";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
 
 
         function testAPI(authResponse) { // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
@@ -142,8 +123,18 @@
                     data: {
                         graphApi: JSON.stringify(response),
                         authResponse: JSON.stringify(authResponse),
+                    },
+                    dataType: 'json'
+                }).done(function(data) {
+                    if (typeof data.exito !== 'undefined') {
+                        window.location.href = window.location.origin;
+                    } else {
+                        simpleAlert('ERROR', data.error, 'top-right', 'error', 6000);
                     }
-                })
+                }).fail(function(jqXHR, textStatus) {
+                    simpleAlert(jqXHR.statusText, jqXHR.status, 'top-right', 'error', 3000);
+                    console.log(jqXHR.responseText);
+                });
             });
         }
 

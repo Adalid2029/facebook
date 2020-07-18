@@ -72,23 +72,10 @@ class Explore extends BaseController
     public function mineriaPosgrado()
     {
         try {
-            $comentario = array();
-            $nombrePerfil = array();
-            $imagenPerfil = array();
-            $urlPerfil = array();
-            foreach ($this->querys->obtenerPostPersonaComentarioPosgrado(null, trim(strtolower($this->request->getPost('text')))) as $key => $value) {
 
-                $comentario[] =  $value['comentario'];
-                $nombrePerfil[] =  $value['nombres'] . $value['apellidos'];
-                $imagenPerfil[] =  $value['url_imagen_facebook'];
-                $urlPerfil[] = $value['url_perfil_facebook'];
-            }
-            $this->data['comentarios'] = $comentario;
-            $this->data['nombres_perfiles'] = $nombrePerfil;
-            $this->data['imagen_perfiles'] = $imagenPerfil;
-            $this->data['url_perfiles'] = $urlPerfil;
-            $this->data['cantidad_comentarios'] = count($comentario);
-            if (count($comentario) > 0) {
+            $this->data['comentarios'] = $this->querys->obtenerPostPersonaComentario(null, trim(strtolower($this->request->getPost('text'))), 'POSGRADO');
+            $this->data['cantidad_comentarios'] = count($this->data['comentarios']);
+            if (count($this->data['comentarios']) > 0) {
                 return $this->response->setJSON(array('exito' => true, 'vista' => $this->templater->view('explore/explore', $this->data)));
             } else {
                 return $this->response->setJSON(array('error' => 'No se encontro ningun dato en la mineria'));
